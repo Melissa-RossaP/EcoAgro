@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Minha Fazendinha</title>
+<link rel="stylesheet" href="joguinho.css" />
+</head>
+<body>
+
+<div class="menu" id="menu">
+  <div class="titulo">Minha Fazendinha</div>
+  <button class="botao" onclick="iniciar()">Jogar</button>
+</div>
+
+<div class="cenario">
+
+<div class="ceu">
+  <div class="sol"></div>
+  <div class="nuvem n1"></div>
+  <div class="nuvem n2"></div>
+</div>
+
+<div class="grama">
+  <div class="plantacao">
+    <div class="trigo"></div>
+    <div class="trigo"></div>
+    <div class="trigo"></div>
+    <div class="trigo"></div>
+    <div class="trigo"></div>
+    <div class="trigo"></div>
+  </div>
+</div>
+
+<audio id="musica" loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=forest-lullaby-110624.mp3" type="audio/mpeg">
+</audio>
+
+<div class="hud">
+Moedas: <span id="coins">0</span>
+</div>
+
+<div class="game">
+
+<div class="itens">
+
+<div class="item" draggable="true" id="seed">
+  <div class="semente"></div>
+</div>
+
+<div class="item" draggable="true" id="water">
+  <div class="gota"></div>
+</div>
+
+</div>
+
+<div class="vaso" id="vaso">
+  <div class="vaso-pixel">
+    <div class="terra"></div>
+  </div>
+</div>
+
+<div class="caixa" id="caixa">
+  <div class="caixa-pixel"></div>
+</div>
+
+</div>
+
+<div class="final" id="final" style="display:none;">
+  <div class="final-box">
+    <h1>✨ Você construiu sua fazendinha! ✨</h1>
+    <p>
+      A agricultura é essencial para nossa vida. Ela produz alimentos, movimenta a economia e ajuda muitas famílias. Com cuidado com a terra e sustentabilidade, podemos cultivar um futuro melhor.
+    </p>
+    <button class="opcao" onclick="reiniciarJogo()">
+      Jogar Novamente
+    </button>
+  </div>
+</div>
+
+<div class="msg" id="msg">
+Arraste a sementinha para o vaso
+</div>
+
+</div>
+
+<script src="joguinho.js"></script>
+</body>
+</html>

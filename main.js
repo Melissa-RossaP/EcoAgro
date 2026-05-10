@@ -436,3 +436,183 @@ document.addEventListener("DOMContentLoaded", () => {
         criarConfetes(e);
     });
 });
+
+
+/* =========================
+   CONFETE MEGA FOFO 🌱✨
+========================= */
+
+function confeteVerde(x, y) {
+
+    confetti({
+        particleCount: 120,
+        spread: 100,
+        startVelocity: 40,
+        scalar: 1.2,
+        ticks: 120,
+        gravity: 0.9,
+
+        origin: { x, y },
+
+        colors: [
+            '#80BB70',
+            '#A8D890',
+            '#ffffff',
+            '#FFD166',
+            '#6ab04c'
+        ]
+    });
+
+    setTimeout(() => {
+
+        confetti({
+            particleCount: 50,
+            angle: 60,
+            spread: 55,
+            origin: { x: x - 0.03, y },
+            colors: ['#ffffff', '#80BB70']
+        });
+
+        confetti({
+            particleCount: 50,
+            angle: 120,
+            spread: 55,
+            origin: { x: x + 0.03, y },
+            colors: ['#FFD166', '#6ab04c']
+        });
+
+    }, 200);
+}
+
+/* =========================
+   SIDEBAR + LOGO
+========================= */
+
+const sidebarItens = document.querySelectorAll('.sidebar a, .sidebar button');
+
+sidebarItens.forEach(item => {
+
+    item.addEventListener('click', () => {
+
+        const rect = item.getBoundingClientRect();
+
+        const x = (rect.left + rect.width / 2) / window.innerWidth;
+        const y = (rect.top + rect.height / 2) / window.innerHeight;
+
+        confeteVerde(x, y);
+
+    });
+
+});
+
+/* =========================
+   TIMELINE
+========================= */
+
+const eventos = document.querySelectorAll('.evento');
+
+eventos.forEach(evento => {
+
+    evento.addEventListener('mouseenter', () => {
+
+        const rect = evento.getBoundingClientRect();
+
+        const x = (rect.left + rect.width / 2) / window.innerWidth;
+        const y = (rect.top + rect.height / 2) / window.innerHeight;
+
+        confeteVerde(x, y);
+
+        evento.style.transform = 'scale(1.03)';
+        evento.style.transition = '0.3s ease';
+
+        setTimeout(() => {
+            evento.style.transform = 'scale(1)';
+        }, 300);
+
+    });
+
+});
+
+/* =========================
+   TÍTULO ECOAGRO 🚜🌾
+========================= */
+
+const titulo = document.querySelector('.title');
+
+/* cria audio */
+const somTrator = new Audio(
+'https://cdn.pixabay.com/download/audio/2022/03/15/audio_8c6e7f9a13.mp3?filename=tractor-engine-6893.mp3'
+);
+
+titulo.addEventListener('mouseenter', () => {
+
+    /* SOM */
+    somTrator.currentTime = 0;
+    somTrator.volume = 0.5;
+    somTrator.play();
+
+    /* CONFETE */
+    const rect = titulo.getBoundingClientRect();
+
+    const x = (rect.left + rect.width / 2) / window.innerWidth;
+    const y = (rect.top + rect.height / 2) / window.innerHeight;
+
+    confeteVerde(x, y);
+
+    /* EMOJIS 🚜🌱🌾 */
+    for(let i = 0; i < 12; i++) {
+
+        const emoji = document.createElement('div');
+
+        const emojis = ['🚜','🌱','🌾','🍃'];
+
+        emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+
+        emoji.style.position = 'fixed';
+        emoji.style.left = rect.left + rect.width/2 + 'px';
+        emoji.style.top = rect.top + rect.height/2 + 'px';
+
+        emoji.style.fontSize = (Math.random() * 20 + 20) + 'px';
+
+        emoji.style.zIndex = '9999';
+        emoji.style.pointerEvents = 'none';
+
+        document.body.appendChild(emoji);
+
+        const destinoX = (Math.random() - 0.5) * 400;
+        const destinoY = (Math.random() - 0.5) * 300;
+
+        emoji.animate([
+            {
+                transform: 'translate(0,0) rotate(0deg)',
+                opacity: 1
+            },
+            {
+                transform: `translate(${destinoX}px, ${destinoY}px) rotate(${Math.random()*720}deg)`,
+                opacity: 0
+            }
+        ], {
+            duration: 1800,
+            easing: 'cubic-bezier(.17,.67,.83,.67)'
+        });
+
+        setTimeout(() => {
+            emoji.remove();
+        }, 1800);
+
+    }
+
+    /* ANIMAÇÃO NO TÍTULO */
+    titulo.style.transform = 'scale(1.08)';
+    titulo.style.textShadow = '0 0 25px #80BB70';
+
+    setTimeout(() => {
+
+        titulo.style.transform = 'scale(1)';
+        titulo.style.textShadow = 'none';
+
+    }, 400);
+
+});
+
+titulo.style.transition = '0.3s ease';

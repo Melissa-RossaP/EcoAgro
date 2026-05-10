@@ -778,9 +778,12 @@ footer p {
 
 .Titu {
     text-align: center;
-    margin-bottom: 40px;
+    margin-top: 50px;
     position: relative;
     z-index: 1;
+    margin-bottom: 50px;
+    background: linear-gradient(to bottom, var(--color-primary), var(--color-primary-dark));
+    border-radius: 100px;
 }
 
 .Titu h1 {
@@ -792,6 +795,7 @@ footer p {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 100px;
 }
 
 .evento {
@@ -874,11 +878,12 @@ footer p {
     }
 }
 
-/* ============ DESAFIOS SECTION ============ */
+
+
 .Mal {
+    margin-top: 50px;
     margin-left: 100px;
     padding: 60px 50px;
-    background: linear-gradient(135deg, #f0fff0 0%, #e8fce8 100%);
     text-align: center;
 }
 
@@ -916,7 +921,7 @@ footer p {
     border-top: 2px solid #eee;
 }
 
-/* ============ RESPONSIVE TIMELINE ============ */
+
 @media (max-width: 768px) {
     .timeline {
         margin-left: 70px;

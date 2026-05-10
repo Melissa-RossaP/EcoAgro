@@ -85,6 +85,22 @@ header {
     transform: scale(1.08) rotate(-3deg);
 }
 
+.botao-voltar {
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.botao-voltar:hover {
+    background: var(--color-primary-dark);
+    transform: scale(1.05);
+}
+
 /* ACESSIBILIDADE */
 
 .abnace {

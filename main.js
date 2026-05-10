@@ -386,6 +386,35 @@ function responderIA(texto) {
     return "Que interessante! 🤖 Ainda tenho muito a aprender. Pode me fazer outra pergunta?";
 }
 
+// LEITOR DE TEXTO
+let lendo = false;
+
+function lerTexto() {
+    const botao = document.getElementById('botaoLeitura');
+
+    if (lendo) {
+        speechSynthesis.cancel();
+        lendo = false;
+        botao.innerText = 'Ler';
+        return;
+    }
+
+    const texto = document.body.innerText;
+    const fala = new SpeechSynthesisUtterance(texto);
+    fala.lang = 'pt-BR';
+    fala.rate = 1;
+
+    lendo = true;
+    botao.innerText = 'Parar';
+
+    fala.onend = () => {
+        lendo = false;
+        botao.innerText = 'Ler';
+    };
+
+    speechSynthesis.speak(fala);
+}
+
 // ========================================
 // INICIALIZAÇÃO
 // ========================================

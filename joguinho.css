@@ -30,7 +30,7 @@ body{
 }
 
 .botao{
-  padding:18px 45px;
+  padding:20px 55px;
   font-size:28px;
   background:#6a994e;
   color:white;
@@ -38,6 +38,7 @@ body{
   border:4px solid #386641;
   cursor:pointer;
   box-shadow:0 6px 0 #386641;
+  margin-top: 20px;
 }
 
 .botao:hover{
@@ -74,6 +75,25 @@ body{
   height:40px;
   background:white;
   border-radius:20px;
+}
+
+.botaozinho{
+  position:absolute;
+  top:20px;
+  right: 50px;
+  padding:10px 20px;
+  font-size:16px;
+  background:#6a994e;
+  color:white;
+  border:none;
+  border:4px solid #386641;
+  cursor:pointer;
+  box-shadow:0 6px 0 #386641;
+}
+
+.botaozinho:hover{
+  transform:translateY(2px);
+  box-shadow:0 4px 0 #386641;
 }
 
 .n1{top:80px;left:120px;}

@@ -108,7 +108,7 @@ const chatWindow = document.getElementById("chatWindow");
 const inputMensagem = document.getElementById("mensagem");
 const chatMessages = document.getElementById("chatMessages");
 
-const API_KEY = "SUA_API_KEY_AQUI";
+const API_KEY = "GEMINI_API_KEY";
 
 function abrirChat() {
 

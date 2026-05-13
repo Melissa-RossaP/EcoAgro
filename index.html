@@ -360,40 +360,55 @@ Esses desafios mostram a necessidade de práticas agrícolas mais sustentáveis,
   </h3>
 </div>
 
-    <!-- CHAT -->
-    <div 
-        class="chat-window" 
-        id="chatWindow"
-        role="dialog"
-        aria-labelledby="chat-title"
-        aria-hidden="true">
+    <!-- Botão flutuante para abrir/fechar o Chat do Agrozinho -->
+<!-- Ele usa a classe que você já configurou no seu CSS -->
+<button 
+    class="chat-toggle-btn"
+    onclick="abrirChat()" 
+    aria-label="Abrir chat de atendimento"
+    title="Abrir Chat">
+    💬
+</button>
 
-        <div class="chat-header" id="chat-title">
-            Agrozinho 
-        </div>
+<!-- CHAT -->
+<div 
+    class="chat-window" 
+    id="chatWindow"
+    role="dialog"
+    aria-labelledby="chat-title"
+    aria-hidden="true"
+    style="display: none;"> <!-- display: none aqui garante o funcionamento do clique inicial -->
 
-        <div class="chat-messages" id="chatMessages" role="log" aria-live="polite">
-            <div class="message bot" role="article">
-                Olá 👋 Como posso ajudar você hoje?
-            </div>
-        </div>
+    <div class="chat-header" id="chat-title">
+        Agrozinho 
+    </div>
 
-        <div class="chat-input">
-            <input
-                type="text"
-                id="mensagem"
-                placeholder="Digite sua mensagem..."
-                aria-label="Campo de entrada de mensagens"
-                autocomplete="off">
-
-            <button 
-                onclick="enviarMensagem()"
-                aria-label="Enviar mensagem"
-                title="Enviar">
-                ➤
-            </button>
+    <div class="chat-messages" id="chatMessages" role="log" aria-live="polite">
+        <div class="message bot" role="article">
+            Olá 👋 Como posso ajudar você hoje?
         </div>
     </div>
+
+    <div class="chat-input">
+        <input
+            type="text"
+            id="mensagem"
+            placeholder="Digite sua mensagem..."
+            aria-label="Campo de entrada de mensagens"
+            autocomplete="off">
+
+        <button 
+            onclick="enviarMensagem()"
+            aria-label="Enviar mensagem"
+            title="Enviar">
+            ➤
+        </button>
+    </div>
+</div>
+
+<!-- Vinculação do arquivo de lógica JavaScript -->
+<script src="main.js"></script>
+
 
 
 

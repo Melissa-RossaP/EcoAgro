@@ -360,15 +360,13 @@ Esses desafios mostram a necessidade de práticas agrícolas mais sustentáveis,
   </h3>
 </div>
 
-    <!-- Botão flutuante para abrir/fechar o Chat do Agrozinho -->
-<!-- Ele usa a classe que você já configurou no seu CSS -->
-<!-- Botão do Robô usando a classe exata do seu CSS -->
+
 <button 
-    class="robot-button"
-    onclick="abrirChat()" 
-    aria-label="Abrir chat do Agrozinho"
-    title="Abrir Chat">
-    🤖
+    class="robot-button" 
+    onclick="abrirChat()"
+    aria-label="Abrir chat com Agrozinho"
+    title="Chat com Agrozinho">
+    <i class="fa-solid fa-robot"></i>
 </button>
 
 
@@ -385,10 +383,11 @@ Esses desafios mostram a necessidade de práticas agrícolas mais sustentáveis,
         Agrozinho 
     </div>
 
-    <div class="chat-messages" id="chatMessages" role="log" aria-live="polite">
-        <div class="message bot" role="article">
-            Olá 👋 Como posso ajudar você hoje?
-        </div>
+    <div class="chat-messages" id="chatMessages" role="log" aria-live="polite"></div>
+
+    <div class="chat-options" id="chatOptions" aria-label="Perguntas rápidas">
+        <p class="options-title">Perguntas rápidas:</p>
+        <!-- O JavaScript insere os botões aqui dinamicamente -->
     </div>
 
     <div class="chat-input">
@@ -407,10 +406,6 @@ Esses desafios mostram a necessidade de práticas agrícolas mais sustentáveis,
         </button>
     </div>
 </div>
-
-<!-- Vinculação do arquivo de lógica JavaScript -->
-<script src="main.js"></script>
-
 
 
 
@@ -448,6 +443,9 @@ Esses desafios mostram a necessidade de práticas agrícolas mais sustentáveis,
 
 </div>
     </footer>
+
+<!-- Vinculação do arquivo de lógica JavaScript -->
+<script src="main.js"></script>
 
 </body>
 </html>

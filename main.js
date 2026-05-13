@@ -6,7 +6,7 @@ let fontSizeMultiplier = 0;
 const originalFontSizes = new Map();
 
 
-document.getElementById('btnTopo').addEventListener('click', function() {
+document.getElementById('btnTopo')?.addEventListener('click', function() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
  });
 
@@ -107,6 +107,101 @@ function aplicarAumentoDeFonte(multiplicador) {
 const chatWindow = document.getElementById("chatWindow");
 const inputMensagem = document.getElementById("mensagem");
 const chatMessages = document.getElementById("chatMessages");
+const chatOptions = document.getElementById("chatOptions");
+const enviarBtn = chatWindow?.querySelector(".chat-input button");
+
+const quickQuestions = [
+    "O que é agronomia?",
+    "Como ser mais sustentável?",
+    "Por que a água é importante?",
+    "Para que serve um trator?",
+    "O que são agrotóxicos?",
+    "Como proteger o solo?",
+    "Qual a importância da biodiversidade?",
+    "Como funciona a agricultura orgânica?",
+    "O que é rotação de culturas?",
+    "Como controlar pragas sem veneno?",
+    "Como economizar água na lavoura?",
+    "O que é agricultura de precisão?"
+];
+
+const visibleOptionCount = 5;
+let visibleQuestionIndices = Array.from({ length: visibleOptionCount }, (_, i) => i);
+
+function atualizarOpcoesRapidas() {
+    if (!chatOptions) return;
+
+    chatOptions.innerHTML = "<p class='options-title'>Perguntas rápidas:</p>";
+    visibleQuestionIndices.forEach((questionIndex, buttonIndex) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.textContent = quickQuestions[questionIndex];
+        button.addEventListener("click", () => usarPerguntaRapida(quickQuestions[questionIndex], buttonIndex));
+        chatOptions.appendChild(button);
+    });
+}
+
+function proximaPerguntaRapida(optionIndex) {
+    const usedIndices = new Set(visibleQuestionIndices);
+    usedIndices.delete(visibleQuestionIndices[optionIndex]);
+
+    const remaining = quickQuestions
+        .map((_, index) => index)
+        .filter((index) => !usedIndices.has(index));
+
+    visibleQuestionIndices[optionIndex] = remaining.length > 0
+        ? remaining[Math.floor(Math.random() * remaining.length)]
+        : (visibleQuestionIndices[optionIndex] + 1) % quickQuestions.length;
+}
+
+const respostasProgramadas = [
+    {
+        chaves: ["o que é agronomia", "agronomia", "agro"],
+        resposta: "Agronomia é a ciência que estuda como produzir alimentos e cuidar do solo, da água e das plantas de forma sustentável."
+    },
+    {
+        chaves: ["como ser mais sustentável", "sustentabilidade", "sustentavel", "sustentável"],
+        resposta: "Sustentabilidade no agro é usar água e solo com sabedoria, plantar de forma responsável e proteger a natureza."
+    },
+    {
+        chaves: ["água", "agua", "solo", "terra", "plantio", "plantação", "plantacao"],
+        resposta: "A água e o solo são essenciais para a agricultura. Usar irrigação e manejo corretos ajuda a cuidar da natureza e produzir mais."
+    },
+    {
+        chaves: ["trator", "máquina", "maquina", "colheita"],
+        resposta: "Um trator ajuda no preparo da terra, plantio e colheita. Ele torna o trabalho mais rápido e eficiente no campo."
+    },
+    {
+        chaves: ["agrotóxico", "agrotoxicos", "agrotóxicos", "praga", "pragas"],
+        resposta: "Agrotóxicos controlam pragas, mas o ideal é usar soluções naturais sempre que possível para proteger a saúde e o solo."
+    },
+    {
+        chaves: ["robo", "robô", "amiguinho", "amigo"],
+        resposta: "Eu sou o Agrozinho, seu robô amiguinho do agro. Posso ajudar com perguntas sobre agricultura, sustentabilidade e tecnologia."
+    }
+];
+
+function obterRespostaProgramada(texto) {
+    const pergunta = texto.trim().toLowerCase();
+    if (!pergunta) {
+        return "Digite uma pergunta ou escolha uma opção rápida para começar.";
+    }
+
+    const item = respostasProgramadas.find((entry) =>
+        entry.chaves.some((chave) => pergunta === chave || pergunta.includes(chave))
+    );
+
+    return item?.resposta ||
+        "Ainda não sei responder isso. Escolha uma das perguntas rápidas ou pergunte algo sobre agronomia e sustentabilidade.";
+}
+
+function adicionarMensagem(tipo, texto) {
+    const mensagem = document.createElement("div");
+    mensagem.classList.add("message", tipo);
+    mensagem.innerHTML = texto;
+    chatMessages.appendChild(mensagem);
+    return mensagem;
+}
 
 // Ouvinte para enviar a mensagem também ao pressionar a tecla Enter
 inputMensagem?.addEventListener("keypress", (e) => {
@@ -115,80 +210,79 @@ inputMensagem?.addEventListener("keypress", (e) => {
     }
 });
 
+inputMensagem?.addEventListener("focus", () => {
+    mostrarOpcoes();
+});
+
+inputMensagem?.addEventListener("blur", () => {
+    setTimeout(() => {
+        if (document.activeElement !== inputMensagem) {
+            ocultarOpcoes();
+        }
+    }, 100);
+});
+
+enviarBtn?.addEventListener("click", () => {
+    ocultarOpcoes();
+});
+
 function abrirChat() {
     if (!chatWindow) return;
 
-    // Obtém o valor real renderizado pelo navegador
     const estiloReal = window.getComputedStyle(chatWindow).display;
 
     if (estiloReal === "none") {
-        // Altera para flex para respeitar o seu flex-direction: column do CSS
-        chatWindow.style.display = "flex"; 
+        chatWindow.style.display = "flex";
         chatWindow.setAttribute("aria-hidden", "false");
+
+        if (chatMessages.children.length === 0) {
+            adicionarMensagem('bot', 'Olá! Tudo bem? Sou o Agrozinho, seu robô amiguinho, como posso te ajudar?');
+        }
+        ocultarOpcoes();
     } else {
         chatWindow.style.display = "none";
         chatWindow.setAttribute("aria-hidden", "true");
     }
 }
 
-async function enviarMensagem() {
-    const texto = inputMensagem.value.trim();
-
-    if (!texto) return;
-
-    /* mensagem usuario */
-    const userMsg = document.createElement("div");
-    userMsg.classList.add("message", "user");
-    userMsg.innerHTML = texto;
-    chatMessages.appendChild(userMsg);
-
-    inputMensagem.value = "";
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-
-    /* digitando */
-    const typing = document.createElement("div");
-    typing.classList.add("message", "bot");
-    typing.innerHTML = "🌱 Agrozinho está pensando...";
-    chatMessages.appendChild(typing);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-
-    try {
-        // Envia para a sua API interna hospedada no Next.js
-        const resposta = await fetch('/api/route', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                mensagem: texto
-            })
-        });
-
-        const data = await resposta.json();
-        typing.remove();
-
-        // Extrai a resposta gerada pelo route.js
-        const respostaIA = data.resposta || "🌱 Não consegui responder agora 😔";
-
-        const botMsg = document.createElement("div");
-        botMsg.classList.add("message", "bot");
-        botMsg.innerHTML = respostaIA;
-        chatMessages.appendChild(botMsg);
-
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-
-    } catch (erro) {
-        console.log(erro);
-        typing.remove();
-
-        const erroDiv = document.createElement("div");
-        erroDiv.classList.add("message", "bot");
-        erroDiv.innerHTML = "⚠️ Erro ao falar com Agrozinho ";
-        chatMessages.appendChild(erroDiv);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
+function mostrarOpcoes() {
+    chatOptions?.classList.add('visible');
 }
 
+function ocultarOpcoes() {
+    chatOptions?.classList.remove('visible');
+}
+
+async function enviarMensagem() {
+    const texto = inputMensagem.value.trim();
+    if (!texto) return;
+
+    adicionarMensagem('user', texto);
+    inputMensagem.value = '';
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    const typing = adicionarMensagem('bot', '🌱 Agrozinho está pensando...');
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    await new Promise((resolve) => setTimeout(resolve, 400));
+
+    typing.remove();
+
+    const resposta = obterRespostaProgramada(texto);
+    adicionarMensagem('bot', resposta);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    ocultarOpcoes();
+}
+
+function usarPerguntaRapida(pergunta, buttonIndex) {
+    inputMensagem.value = pergunta;
+    proximaPerguntaRapida(buttonIndex);
+    atualizarOpcoesRapidas();
+    enviarMensagem();
+}
+
+atualizarOpcoesRapidas();
 
 
 

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="info.css">
     <title>informações</title>
-
     <script src="info.js"></script>
 </head>
 <body>
@@ -13,19 +12,19 @@
 
     <div class="splash-text">
         <span class="linha1">Bem-vindo(a) ao</span><br>
-        <strong class="linha2">Sobre AgroEco</strong>
+        <strong class="linha2">Sobre EcoAgro</strong>
     </div>
 
     <div class="Logo">
-        <a href="inicio.html" aria-label="Voltar para a página inicial">
-            <img src="img/Logo.png" alt="Logo Ruralidades Urbanas">
+        <a href="index.html" aria-label="Voltar para a página inicial">
+            <img src="img/logo-agrinho.png" alt="Logo EcoAgro" loading="lazy">
         </a>
     </div>
 
     <button onclick="window.location.href='index.html'" class="botao-voltar" aria-label="Voltar ao Index">Voltar ao Index</button>
 
-    <button onclick="toggleMenu()" aria-label="Acessibilidade" class="abnace">
-        <img src="img/acessibilidade.png" alt="Ícone de acessibilidade">
+    <button onclick="toggleMenu(); criarConfetes();" aria-label="Acessibilidade" class="abnace">
+        <img src="img/acessibilidade.png" alt="Ícone de acessibilidade" loading="lazy">
     </button>
 
     <div id="menuAcessibilidade" class="menu">
@@ -39,8 +38,8 @@
 
 <main>
 
-    <h1 class="titulo-principal">
-        Olá! Bem-vindo(a) ao Sobre do AgroEco!
+    <h1 class="titulo-principal" onmouseover="criarConfetes()">
+        Olá! Bem-vindo(a) ao Sobre do EcoAgro!
     </h1>
 
     <section class="INICIO">
@@ -79,7 +78,7 @@
 
         <div class="comdes">
 
-            <img src="img/reserva_brasao.jpg" alt="Brasão de Reserva Paraná">
+            <img src="img/reserva_brasao.jpg" alt="Brasão de Reserva Paraná" loading="lazy" onmouseover="criarConfetes()">
 
             <p>Brasão de Reserva - Paraná</p>
 
@@ -105,14 +104,14 @@
 
         <div class="Fotos">
 
-            <img src="img/Plantação2.jpg" alt="Plantação">
-            <img src="img/Plantação1.jpg" alt="Plantação">
-            <img src="img/Plantação3.jpg" alt="Plantação">
-            <img src="img/Plantação4.jpg" alt="Plantação">
-            <img src="img/Plantação 5.jpg" alt="Plantação">
-            <img src="img/Plantação 6.jpg" alt="Plantação">
-            <img src="img/Plantação 7.jpg" alt="Plantação">
-            <img src="img/Plantação 8.jpg" alt="Plantação">
+            <img src="img/Plantação2.jpg" alt="Plantação 2" loading="lazy" onmouseover="criarConfetes()">
+            <img src="img/Plantação1.jpg" alt="Plantação 1" loading="lazy" onmouseover="criarConfetes()">
+            <img src="img/Plantação3.jpg" alt="Plantação 3" loading="lazy" onmouseover="criarConfetes()">
+            <img src="img/Plantação4.jpg" alt="Plantação 4" loading="lazy" onmouseover="criarConfetes()">
+            <img src="img/Plantação 5.jpg" alt="Plantação 5" loading="lazy" onmouseover="criarConfetes()">
+            <img src="img/Plantação 6.jpg" alt="Plantação 6" loading="lazy" onmouseover="criarConfetes()">
+            <img src="img/Plantação 7.jpg" alt="Plantação 7" loading="lazy" onmouseover="criarConfetes()">
+            <img src="img/Plantação 8.jpg" alt="Plantação 8" loading="lazy" onmouseover="criarConfetes()">
 
         </div>
 
@@ -142,7 +141,7 @@
 
         <div class="comdes">
 
-            <img src="img/agrinhofaep.png" alt="Programa Agrinho">
+            <img src="img/agrinhofaep.png" alt="Programa Agrinho" loading="lazy">
 
             <p>Programa Agrinho - Sistema FAEP</p>
 
@@ -190,7 +189,7 @@
 
         <div class="comdes">
 
-            <img src="img/Brasil.jpg" alt="Bandeira do Brasil">
+            <img src="img/Brasil.jpg" alt="Bandeira do Brasil" loading="lazy">
 
             <p>
                 Bandeira do Brasil
@@ -259,6 +258,13 @@
     <button id="btnTopo" title="Voltar ao topo">
         ↑
     </button>
+
+    <!-- Música de fundo gratuita - Forest Lullaby by Lesfm on Pixabay -->
+    <audio id="backgroundMusic" controls loop preload="none">
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=forest-lullaby-110624.mp3" type="audio/mpeg">
+        Seu navegador não suporta áudio.
+    </audio>
+    <p class="music-attribution">Música: "Forest Lullaby" por Lesfm - <a href="https://pixabay.com/music/meditationspiritual-forest-lullaby-110624/" target="_blank">Pixabay.com</a> (Licença Gratuita)</p>
 
 </footer>
 </body>

@@ -154,7 +154,7 @@ async function enviarMensagem() {
 
     try {
         // Envia para a sua API interna hospedada no Next.js
-        const resposta = await fetch('/api/Agrozinho', {
+        const resposta = await fetch('/api/route', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

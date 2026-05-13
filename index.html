@@ -362,13 +362,15 @@ Esses desafios mostram a necessidade de práticas agrícolas mais sustentáveis,
 
     <!-- Botão flutuante para abrir/fechar o Chat do Agrozinho -->
 <!-- Ele usa a classe que você já configurou no seu CSS -->
+<!-- Botão do Robô usando a classe exata do seu CSS -->
 <button 
-    class="chat-toggle-btn"
+    class="robot-button"
     onclick="abrirChat()" 
-    aria-label="Abrir chat de atendimento"
+    aria-label="Abrir chat do Agrozinho"
     title="Abrir Chat">
-    💬
+    🤖
 </button>
+
 
 <!-- CHAT -->
 <div 
@@ -376,8 +378,8 @@ Esses desafios mostram a necessidade de práticas agrícolas mais sustentáveis,
     id="chatWindow"
     role="dialog"
     aria-labelledby="chat-title"
-    aria-hidden="true"
-    style="display: none;"> <!-- display: none aqui garante o funcionamento do clique inicial -->
+    aria-hidden="true">
+ <!-- display: none aqui garante o funcionamento do clique inicial -->
 
     <div class="chat-header" id="chat-title">
         Agrozinho 

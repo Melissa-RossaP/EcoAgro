@@ -103,9 +103,35 @@ function aplicarAumentoDeFonte(multiplicador) {
     });
 }
 
+// VARIÁVEIS GLOBAIS: Mantenha estas linhas obrigatoriamente no topo do arquivo
+const chatWindow = document.getElementById("chatWindow");
+const inputMensagem = document.getElementById("mensagem");
+const chatMessages = document.getElementById("chatMessages");
+
+// Ouvinte para enviar a mensagem também ao pressionar a tecla Enter
+inputMensagem?.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+        enviarMensagem();
+    }
+});
+
+function abrirChat() {
+    if (!chatWindow) return;
+
+    // Obtém o valor real renderizado pelo navegador
+    const estiloReal = window.getComputedStyle(chatWindow).display;
+
+    if (estiloReal === "none") {
+        // Altera para flex para respeitar o seu flex-direction: column do CSS
+        chatWindow.style.display = "flex"; 
+        chatWindow.setAttribute("aria-hidden", "false");
+    } else {
+        chatWindow.style.display = "none";
+        chatWindow.setAttribute("aria-hidden", "true");
+    }
+}
 
 async function enviarMensagem() {
-
     const texto = inputMensagem.value.trim();
 
     if (!texto) return;
@@ -127,22 +153,21 @@ async function enviarMensagem() {
     chatMessages.scrollTop = chatMessages.scrollHeight;
 
     try {
-        // CORREÇÃO AQUI: Chama a sua API interna em vez de chamar o Google direto
-        // Ajuste o caminho abaixo dependendo de onde está sua pasta (ex: '/api/Agrozinho')
+        // Envia para a sua API interna hospedada no Next.js
         const resposta = await fetch('/api/Agrozinho', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                mensagem: texto // Envia a propriedade 'mensagem' que o route.js espera
+                mensagem: texto
             })
         });
 
         const data = await resposta.json();
         typing.remove();
 
-        // Pega a propriedade 'resposta' devolvida pelo seu route.js
+        // Extrai a resposta gerada pelo route.js
         const respostaIA = data.resposta || "🌱 Não consegui responder agora 😔";
 
         const botMsg = document.createElement("div");
@@ -163,6 +188,7 @@ async function enviarMensagem() {
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 }
+
 
 
 

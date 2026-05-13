@@ -104,35 +104,6 @@ function aplicarAumentoDeFonte(multiplicador) {
 }
 
 
-const chatWindow = document.getElementById("chatWindow");
-const inputMensagem = document.getElementById("mensagem");
-const chatMessages = document.getElementById("chatMessages");
-
-const API_KEY = "GEMINI_API_KEY";
-
-function abrirChat() {
-
-    if (!chatWindow) return;
-
-    const isOpen =
-        chatWindow.style.display === "flex";
-
-    chatWindow.style.display =
-        isOpen ? "none" : "flex";
-
-    chatWindow.setAttribute(
-        "aria-hidden",
-        isOpen ? "true" : "false"
-    );
-}
-
-inputMensagem?.addEventListener("keypress", (e) => {
-
-    if (e.key === "Enter") {
-        enviarMensagem();
-    }
-});
-
 async function enviarMensagem() {
 
     const texto = inputMensagem.value.trim();
@@ -140,100 +111,59 @@ async function enviarMensagem() {
     if (!texto) return;
 
     /* mensagem usuario */
-
     const userMsg = document.createElement("div");
-
     userMsg.classList.add("message", "user");
-
     userMsg.innerHTML = texto;
-
     chatMessages.appendChild(userMsg);
 
     inputMensagem.value = "";
-
-    chatMessages.scrollTop =
-        chatMessages.scrollHeight;
+    chatMessages.scrollTop = chatMessages.scrollHeight;
 
     /* digitando */
-
     const typing = document.createElement("div");
-
     typing.classList.add("message", "bot");
-
     typing.innerHTML = "🌱 Agrozinho está pensando...";
-
     chatMessages.appendChild(typing);
-
-    chatMessages.scrollTop =
-        chatMessages.scrollHeight;
+    chatMessages.scrollTop = chatMessages.scrollHeight;
 
     try {
-
-        const resposta = await fetch(
-            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`,
-            {
-                method: "POST",
-
-                headers: {
-                    "Content-Type": "application/json"
-                },
-
-                body: JSON.stringify({
-
-                    contents: [
-                        {
-                            parts: [
-                                {
-                                    text:
-`Você é Agrozinho.
-Um assistente fofo, divertido e inteligente sobre agro, sustentabilidade e estudos.
-
-Usuário: ${texto}`
-                                }
-                            ]
-                        }
-                    ]
-                })
-            }
-        );
+        // CORREÇÃO AQUI: Chama a sua API interna em vez de chamar o Google direto
+        // Ajuste o caminho abaixo dependendo de onde está sua pasta (ex: '/api/Agrozinho')
+        const resposta = await fetch('/api/Agrozinho', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                mensagem: texto // Envia a propriedade 'mensagem' que o route.js espera
+            })
+        });
 
         const data = await resposta.json();
-
         typing.remove();
 
-        const respostaIA =
-            data?.candidates?.[0]?.content?.parts?.[0]?.text
-            || "🌱 Não consegui responder agora 😔";
+        // Pega a propriedade 'resposta' devolvida pelo seu route.js
+        const respostaIA = data.resposta || "🌱 Não consegui responder agora 😔";
 
-        const botMsg =
-            document.createElement("div");
-
+        const botMsg = document.createElement("div");
         botMsg.classList.add("message", "bot");
-
         botMsg.innerHTML = respostaIA;
-
         chatMessages.appendChild(botMsg);
 
-        chatMessages.scrollTop =
-            chatMessages.scrollHeight;
+        chatMessages.scrollTop = chatMessages.scrollHeight;
 
     } catch (erro) {
-
         console.log(erro);
-
         typing.remove();
 
-        const erroDiv =
-            document.createElement("div");
-
+        const erroDiv = document.createElement("div");
         erroDiv.classList.add("message", "bot");
-
-        erroDiv.innerHTML =
-            "⚠️ Erro ao falar com Agrozinho ";
-
+        erroDiv.innerHTML = "⚠️ Erro ao falar com Agrozinho ";
         chatMessages.appendChild(erroDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 }
+
 
 
 function criarConfetes(event) {

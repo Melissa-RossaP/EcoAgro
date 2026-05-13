@@ -5,9 +5,10 @@ const menuAcessibilidade = document.getElementById("menu");
 let fontSizeMultiplier = 0;
 const originalFontSizes = new Map();
 
-/* ========================================
-   ACESSIBILIDADE 🌱
-======================================== */
+
+document.getElementById('btnTopo').addEventListener('click', function() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+ });
 
 function inicializarAcessibilidade() {
 
@@ -102,9 +103,6 @@ function aplicarAumentoDeFonte(multiplicador) {
     });
 }
 
-/* ========================================
-   CHAT IA 🤖🌾
-======================================== */
 
 const chatWindow = document.getElementById("chatWindow");
 const inputMensagem = document.getElementById("mensagem");
@@ -187,7 +185,7 @@ async function enviarMensagem() {
                             parts: [
                                 {
                                     text:
-`Você é Agrozinho 🌾🚜.
+`Você é Agrozinho.
 Um assistente fofo, divertido e inteligente sobre agro, sustentabilidade e estudos.
 
 Usuário: ${texto}`
@@ -231,140 +229,12 @@ Usuário: ${texto}`
         erroDiv.classList.add("message", "bot");
 
         erroDiv.innerHTML =
-            "⚠️ Erro ao falar com Agrozinho 😔";
+            "⚠️ Erro ao falar com Agrozinho ";
 
         chatMessages.appendChild(erroDiv);
     }
 }
 
-/* ========================================
-   QUIZ 🌟
-======================================== */
-
-function corrigirQuiz() {
-
-    criarConfetesAnimado();
-
-    tocarSomFofo();
-
-    let acertos = 0;
-
-    const totalPerguntas = 15;
-
-    const respostasCorretas = {
-
-        q1: "c",
-        q2: "c",
-        q3: "c",
-        q4: "c",
-        q5: "c",
-        q6: "c",
-        q7: "c",
-        q8: "c",
-        q9: "c",
-        q10: "c",
-        q11: "c",
-        q12: "c",
-        q13: "c",
-        q14: "c",
-        q15: "c"
-    };
-
-    for (let i = 1; i <= totalPerguntas; i++) {
-
-        const resposta =
-            document.querySelector(
-                `input[name="q${i}"]:checked`
-            );
-
-        if (!resposta) {
-
-            alert("⚠️ Responda todas as perguntas!");
-
-            return;
-        }
-
-        if (
-            resposta.value ===
-            respostasCorretas[`q${i}`]
-        ) {
-            acertos++;
-        }
-    }
-
-    const resultadoDiv =
-        document.getElementById("resultadoQuiz");
-
-    let mensagem = "";
-    let emoji = "";
-    let cor = "";
-
-    if (acertos === 15) {
-
-        mensagem =
-            "🎉 Incrível! Você acertou tudo!";
-
-        emoji = "🏆";
-
-        cor = "#28a745";
-
-    } else if (acertos >= 10) {
-
-        mensagem =
-            "🌟 Muito bom! Você manda bem!";
-
-        emoji = "🌱";
-
-        cor = "#ffc107";
-
-    } else if (acertos >= 5) {
-
-        mensagem =
-            "📚 Você está aprendendo!";
-
-        emoji = "🌿";
-
-        cor = "#17a2b8";
-
-    } else {
-
-        mensagem =
-            "💪 Continue estudando!";
-
-        emoji = "🌍";
-
-        cor = "#e74c3c";
-    }
-
-    resultadoDiv.innerHTML = `
-
-        <div class="resultado-box">
-
-            <p class="resultado-emoji">
-                ${emoji}
-            </p>
-
-            <p class="resultado-texto">
-                ${mensagem}
-            </p>
-
-            <p class="resultado-pontos">
-                Você acertou:
-                ${acertos}/${totalPerguntas}
-            </p>
-
-        </div>
-    `;
-
-    resultadoDiv.style.borderColor = cor;
-
-    resultadoDiv.style.backgroundColor =
-        cor + "20";
-}
-
-/* ========================================
-   CONFETES ✨
-======================================== */
 
 function criarConfetes(event) {
 
@@ -453,9 +323,7 @@ function criarConfetesAnimado() {
     }
 }
 
-/* ========================================
-   SOM FOFINHO 🎵
-======================================== */
+
 
 function tocarSomFofo() {
 
@@ -504,9 +372,6 @@ function tocarSomFofo() {
     }, 450);
 }
 
-/* ========================================
-   LEITOR DE TEXTO 🔊
-======================================== */
 
 let lendo = false;
 
@@ -549,9 +414,6 @@ function lerTexto() {
     speechSynthesis.speak(fala);
 }
 
-/* ========================================
-   ECOAGRO 🚜🌾
-======================================== */
 
 const titulo =
     document.querySelector(".title");
@@ -659,9 +521,7 @@ if (titulo) {
     titulo.style.transition = "0.3s ease";
 }
 
-/* ========================================
-   INICIALIZAÇÃO 🌿
-======================================== */
+
 
 document.addEventListener(
     "DOMContentLoaded",

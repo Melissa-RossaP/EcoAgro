@@ -14,7 +14,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
 
 const firebaseConfig = {
-    apiKey: "AIzaKey",
+    apiKey: "AIzaSyC0WFKpk24pwVy4PdrGR_WW-uAhNKg3Y7U",
     authDomain: "comentariosecoagro.firebaseapp.com",
     projectId: "comentariosecoagro",
     storageBucket: "comentariosecoagro.firebasestorage.app",
@@ -31,7 +31,10 @@ window.enviarComentario = async function () {
     const nome = document.getElementById("nome").value.trim();
     const mensagem = document.getElementById("mensagem").value.trim();
 
-    if (!nome || !mensagem) return alert("Preencha todos os campos.");
+    if (!nome || !mensagem) {
+        alert("Preencha todos os campos.");
+        return;
+    }
 
     try {
         await addDoc(collection(db, "comentarios"), {
@@ -43,9 +46,8 @@ window.enviarComentario = async function () {
 
         document.getElementById("nome").value = "";
         document.getElementById("mensagem").value = "";
-    } catch (erro) {
-        console.error(erro);
-        alert("Erro ao enviar comentário.");
+    } catch (e) {
+        console.error("Erro ao enviar:", e);
     }
 };
 
@@ -69,14 +71,18 @@ onSnapshot(q, (snapshot) => {
 
         const btn = document.createElement("button");
         btn.classList.add("like-btn");
-        btn.textContent = `❤️ ${data.likes || 0}`;
+        btn.textContent = `❤️ ${data.likes ?? 0}`;
 
         btn.addEventListener("click", async () => {
+            console.log("clicou no like:", d.id);
+
             const ref = doc(db, "comentarios", d.id);
 
             await updateDoc(ref, {
                 likes: increment(1)
             });
+
+            console.log("update enviado para Firestore");
         });
 
         div.appendChild(nome);

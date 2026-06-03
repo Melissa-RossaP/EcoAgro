@@ -120,20 +120,7 @@ header {
     box-shadow: 0 8px 15px rgba(0,0,0,0.2);
 }
 
-/* MÚSICA */
 
-#backgroundMusic {
-    margin-top: 20px;
-    width: 100%;
-    max-width: 300px;
-}
-
-.music-attribution {
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.8);
-    margin-top: 10px;
-    text-align: center;
-}
 
 /* ACESSIBILIDADE */
 
@@ -276,47 +263,7 @@ header {
     color: rgb(30, 87, 26);
 }
 
-/* GALERIA */
 
-.Rolandinho {
-    text-align: center;
-    padding: 40px 20px 20px;
-}
-
-.Rolandinho h2 {
-    font-size: clamp(1.5rem, 3vw, 2.2rem);
-}
-
-.Rolando {
-    overflow: hidden;
-    padding: 20px 0 50px;
-}
-
-.Fotos {
-    display: flex;
-    gap: 20px;
-    width: max-content;
-    align-items: center;
-}
-
-.Fotos img {
-    width: 320px;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-    transition: var(--transition);
-}
-
-.Fotos img:hover {
-    transform: scale(1.04);
-}
-
-.Rolando p {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 0.95rem;
-}
 
 /* FOOTER */
 

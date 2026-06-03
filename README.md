@@ -1,26 +1,12 @@
 # 🌿 EcoAgro — Agrinho 2026
 
-![EcoAgro Banner](https://via.placeholder.com/1200x300.png?text=EcoAgro+%E2%80%94+Agrinho+2026)
-
-![Firebase](https://img.shields.io/badge/Firebase-Firestore-orange?style=for-the-badge&logo=firebase)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow?style=for-the-badge&logo=javascript)
-![HTML5](https://img.shields.io/badge/HTML5-Markup-red?style=for-the-badge&logo=html5)
-![CSS3](https://img.shields.io/badge/CSS3-Styles-blue?style=for-the-badge&logo=css3)
-![Vercel](https://img.shields.io/badge/Deploy-Vercel-black?style=for-the-badge&logo=vercel)
-
----
-
-## 🌱 Bem-vindo ao EcoAgro
+## 🌱 Bem-vindo ao site EcoAgro
 
 *Este projeto foi criado com o objetivo de ensinar de forma interativa sobre a agricultura, sua importância, sua história e sua conexão com a vida urbana.*
 
----
+*Neste site, você encontrará conteúdos educativos sobre agricultura, sustentabilidade, práticas do campo e a relação entre campo e cidade.*
 
-## 🎮 Preview do Projeto
-
-![Preview do Site](https://via.placeholder.com/800x450.png?text=Preview+do+EcoAgro)
-
-O EcoAgro conta com uma interface moderna, responsiva e interativa, incluindo sistema de comentários, jogo e bot educativo.
+*Nosso objetivo é valorizar o campo, sua história, sua importância e as inovações que o tornam essencial para a vida urbana e rural.*
 
 ---
 
@@ -28,84 +14,153 @@ O EcoAgro conta com uma interface moderna, responsiva e interativa, incluindo si
 
 Este site tem como missão informar, inspirar e conscientizar sobre a importância da agricultura e sua relação com o cotidiano das pessoas.
 
+Mesmo vivendo em áreas urbanas, todos dependem diretamente do campo para alimentação, produtos e sustentabilidade.
+
+Através de um conteúdo educativo e interativo, o projeto busca tornar o aprendizado mais acessível, moderno e envolvente.
+
+---
+
+## 🛠 Tecnologias Utilizadas
+
+- HTML5  
+- CSS3  
+- JavaScript (ES Modules)  
+- Firebase (Firestore Database)  
+- Google Fonts  
+- Visual Studio Code (VS Code)  
+- Figma (protótipo do design)  
+- Vercel (hospedagem do site)  
+
 ---
 
 ## ⚙️ Funcionalidades
 
-- Sistema de comentários em tempo real (Firebase)  
-- Mini jogo de colheita interativo 🎮  
-- Bot inteligente com respostas pré-programadas 🤖  
-- Interface responsiva  
-- Carrossel e animações  
+- Splash screen de abertura  
+- Navegação entre páginas  
+- Sistema de comentários em tempo real com Firebase  
+- Banco de dados na nuvem (Firestore)  
+- Interface responsiva para diferentes dispositivos  
+- Carrossel interativo  
 - Linha do tempo da agricultura  
+- Seção de contato com redes sociais  
+- 🎮 Mini jogo de colheita feito em JavaScript  
+- 🤖 Bot interativo com respostas pré-programadas  
 
 ---
 
-## 🤖 Bot Interativo (Destaque)
+## ✨ Estilização com CSS3
 
-O EcoAgro possui um bot interativo desenvolvido em JavaScript.
+No CSS, foram utilizadas técnicas modernas para garantir um site bonito, funcional e responsivo:
 
-Ele funciona como um assistente simples dentro do site, respondendo perguntas pré-programadas sobre agricultura, sustentabilidade e o conteúdo do projeto.
-
-💬 *Exemplo de interação:*
-- Usuário: "O que é agricultura sustentável?"
-- Bot: "É uma forma de produzir alimentos respeitando o meio ambiente e os recursos naturais."
+- Flexbox e Grid Layout  
+- Animações com @keyframes  
+- Transições suaves em botões e elementos  
+- Media Queries para diferentes tamanhos de tela  
+- Cores e contrastes pensados para leitura confortável  
+- Componentes visuais personalizados  
 
 ---
 
-## 🎮 Mini Jogo de Colheita (Preview)
+## ♿ Acessibilidade
 
-O jogo simula uma experiência divertida no campo 🌾
+O site permite ajuste de tamanho de fonte e contraste para melhorar a leitura e acessibilidade do usuário.
 
-- O jogador coleta itens agrícolas  
-- Sistema simples em JavaScript  
-- Objetivo educativo e interativo  
-- Aproxima o usuário do tema agricultura  
+---
+
+## 🎮 Jogo de Colheita
+
+O projeto conta com um mini jogo interativo de colheita desenvolvido em JavaScript.
+
+O jogo simula a experiência do campo de forma divertida e educativa, aproximando o usuário do tema agricultura.
+
+---
+
+## 🤖 Bot Interativo
+
+O site possui um bot desenvolvido em JavaScript que responde a perguntas pré-programadas.
+
+Ele funciona como um assistente simples dentro do site, ajudando o usuário com informações básicas sobre o conteúdo do EcoAgro.
 
 ---
 
 ## 🔥 Firebase no Projeto
 
-- Armazenamento de comentários  
-- Atualização em tempo real  
-- Banco de dados na nuvem (Firestore)  
+O Firebase Firestore foi utilizado para:
+
+- Armazenar comentários dos usuários  
+- Atualizar dados em tempo real  
+- Criar uma experiência dinâmica sem backend próprio  
 
 ---
 
-## 🛠 Tecnologias
+## 🎨 Identidade Visual
 
-- HTML5  
-- CSS3  
-- JavaScript (ES Modules)  
-- Firebase  
-- Vercel  
-- Figma  
+- Logo criada por Melissa Rossa Pereira  
+- Design inspirado na conexão entre campo e cidade  
+- Paleta de cores baseada na natureza e sustentabilidade  
+
+---
+
+## 📚 Referências e Autoria
+
+Todo o conteúdo textual foi desenvolvido por **Melissa Rossa Pereira**, com base em pesquisas em fontes confiáveis como:
+
+- Brasil Escola  
+- Mundo Educação  
+- CropLife Brasil  
+- Wikipédia  
+
+O conteúdo foi reescrito com linguagem própria para fins educativos.
 
 ---
 
 ## 📌 Informações do Projeto
 
-Desenvolvido por **Melissa Rossa Pereira** para o Agrinho 2026.
+O site **EcoAgro** foi desenvolvido por **Melissa Rossa Pereira**, como parte do projeto Agrinho 2026.
 
-O projeto contou com apoio de ferramentas de inteligência artificial para correções e otimizações durante o desenvolvimento, acelerando o processo de aprendizado.
+Durante o desenvolvimento, foram aplicadas correções e melhorias com auxílio de inteligência artificial, com o objetivo de otimizar o processo de desenvolvimento e aprendizado.
+
+Mesmo assim, toda a estrutura, organização, design e implementação foram criados pela autora.
+
+---
+
+## ✒️ Licença
+
+Este projeto está licenciado sob a licença MIT.
+
+---
+
+## 🌟 Reflexão sobre o aprendizado
+
+Neste projeto, enfrentei desafios importantes principalmente na integração de JavaScript com Firebase.
+
+Aprendi a trabalhar com dados em tempo real, criar interatividade e melhorar a experiência do usuário.
+
+O jogo de colheita e o bot interativo tornaram o projeto mais dinâmico e divertido.
 
 ---
 
 ## 👩‍💻 Autoria
 
-**Melissa Rossa Pereira**
+Projeto desenvolvido por **Melissa Rossa Pereira**.
 
 ---
 
 ## 📱 Contato
 
-- WhatsApp: +55 (42) 9 9910-6956  
-- E-mail: melissarossap@gmail.com  
-- Instagram: [m3l.r1](https://www.instagram.com/m3l.r1/)  
-- LinkedIn: Melissa Rossa Pereira  
+- 📞 WhatsApp: +55 (42) 9 9910-6956  
+- ✉️ E-mail: melissarossap@gmail.com  
+- 📸 Instagram: [m3l.r1](https://www.instagram.com/m3l.r1/)  
+- 🔗 LinkedIn: Melissa Rossa Pereira  
 
 ---
 
-## 📌 Status
+## 🪄 Agradecimentos
+
+Agradeço à professora, colegas e fontes de estudo que contribuíram para o desenvolvimento do projeto.
+
+---
+
+## 📌 Status do Projeto
 
 ✔ Projeto concluído

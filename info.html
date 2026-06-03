@@ -7,6 +7,19 @@
     <title>informações</title>
     <script src="info.js"></script>
 </head>
+
+<!-- VLIBRAS - ACESSIBILIDADE -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
 <body>
 <header>
 
@@ -23,16 +36,52 @@
 
     <button onclick="window.location.href='index.html'" class="botao-voltar" aria-label="Voltar ao Index">Voltar ao Index</button>
 
-    <button onclick="toggleMenu(); criarConfetes();" aria-label="Acessibilidade" class="abnace">
-        <img src="Img/acessibilidade.png" alt="Ícone de acessibilidade" loading="lazy">
-    </button>
+            <!-- ACESSIBILIDADE (acho q tem q melhorar, vou ver se consigo fazer falar, porem depende se eu tenho essa capacidade, pq eu nao lembro mais como q faz, **Melhorar o CSS logo**) -->
+        <div class="acessibilidade">
+            <button 
+                class="abnace" 
+                id="btn-acessibilidade"
+                aria-label="Menu de acessibilidade"
+                aria-expanded="false"
+                aria-controls="menu">
+                <img src="Img/acessibilidade.png" alt="Acessibilidade">
+            </button>
 
-    <div id="menuAcessibilidade" class="menu">
-        <button onclick="aumentarFonte()" class="botao">A+</button>
-        <button onclick="diminuirFonte()" class="botao">A-</button>
-        <button onclick="contraste()" class="botao">Contraste</button>
-        <button onclick="lerTexto()" class="botao" id="botaoLeitura">Ler</button>
-    </div>
+            <div class="menu" id="menu" role="menu">
+                <button 
+                    class="botao" 
+                    onclick="alterarContraste()"
+                    role="menuitem"
+                    aria-label="Alternar contraste">
+                     Contraste
+                </button>
+
+                <button 
+                    class="botao" 
+                    onclick="aumentarFonte()"
+                    role="menuitem"
+                    aria-label="Aumentar tamanho da fonte">
+                    A+
+                </button>
+
+                <button 
+                    class="botao" 
+                    onclick="diminuirFonte()"
+                    role="menuitem"
+                    aria-label="Diminuir tamanho da fonte">
+                    A-
+                </button>
+
+                <button 
+                    class="botao" 
+                    onclick="lerTexto()"
+                    role="menuitem"
+                    aria-label="Ler texto em voz alta"
+                    id="botaoLeitura">
+                    Ler
+                </button>
+            </div>
+        </div>
 
 </header>
 

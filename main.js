@@ -103,7 +103,7 @@ function aplicarAumentoDeFonte(multiplicador) {
     });
 }
 
-// VARIÁVEIS GLOBAIS: Mantenha estas linhas obrigatoriamente no topo do arquivo
+
 const chatWindow = document.getElementById("chatWindow");
 const inputMensagem = document.getElementById("mensagem");
 const chatMessages = document.getElementById("chatMessages");

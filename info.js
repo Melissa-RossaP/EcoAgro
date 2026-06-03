@@ -1,33 +1,94 @@
-// MENU ACESSIBILIDADE
-function toggleMenu() {
-    const menu = document.getElementById('menuAcessibilidade');
-    menu.classList.toggle('ativo');
+
+const btnAcessibilidade = document.getElementById("btn-acessibilidade"); 
+const menuAcessibilidade = document.getElementById("menuAcessibilidade"); 
+
+let fontSizeMultiplier = 0;
+const originalFontSizes = new Map();
+let lendo = false;
+
+// INICIALIZAÇÃO: Roda assim que a página carrega para aplicar o que foi salvo
+document.addEventListener("DOMContentLoaded", () => {
+    inicializarAcessibilidade();
+});
+
+function inicializarAcessibilidade() {
+    const contrasteSalvo = localStorage.getItem("contraste");
+    const fonteSalva = localStorage.getItem("fontSizeMultiplier");
+
+    if (contrasteSalvo === "ativo") {
+        document.body.classList.add("contraste-ativo");
+    }
+
+    if (fonteSalva) {
+        fontSizeMultiplier = parseInt(fonteSalva, 10);
+        // Pequeno delay para garantir que o CSS da página terminou de carregar
+        setTimeout(() => aplicarAumentoDeFonte(fontSizeMultiplier), 100);
+    }
 }
 
-// AUMENTAR E DIMINUIR FONTE
-let tamanhoFonteAtual = 1;
+
+function toggleMenu() {
+    if (menuAcessibilidade) {
+        menuAcessibilidade.classList.toggle('ativo');
+        const isOpen = menuAcessibilidade.classList.contains('ativo');
+        btnAcessibilidade?.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    }
+}
+
+// Listener alternativo caso use o clique direto via ID do botão
+btnAcessibilidade?.addEventListener("click", toggleMenu);
+
+// ESCONDER MENU AO CLICAR FORA (Unificado e protegido contra erros)
+document.addEventListener('click', (e) => {
+    const botao = document.querySelector('.abnace') || btnAcessibilidade;
+
+    if (menuAcessibilidade && botao) {
+        if (!menuAcessibilidade.contains(e.target) && !botao.contains(e.target)) {
+            menuAcessibilidade.classList.remove('ativo');
+            btnAcessibilidade?.setAttribute("aria-expanded", "false");
+        }
+    }
+});
+
+function contraste() {
+    document.body.classList.toggle('contraste-ativo');
+    const contrasteAtual = document.body.classList.contains('contraste-ativo') ? "ativo" : "inativo";
+    localStorage.setItem("contraste", contrasteAtual);
+}
 
 function aumentarFonte() {
-    if (tamanhoFonteAtual < 1.8) {
-        tamanhoFonteAtual += 0.1;
-        document.body.style.fontSize = tamanhoFonteAtual + 'em';
+    if (fontSizeMultiplier < 5) {
+        fontSizeMultiplier++;
+        aplicarAumentoDeFonte(fontSizeMultiplier);
+        localStorage.setItem("fontSizeMultiplier", fontSizeMultiplier);
     }
 }
 
 function disminuirFonte() {
-    if (tamanhoFonteAtual > 0.8) {
-        tamanhoFonteAtual -= 0.1;
-        document.body.style.fontSize = tamanhoFonteAtual + 'em';
+    if (fontSizeMultiplier > -5) {
+        fontSizeMultiplier--;
+        aplicarAumentoDeFonte(fontSizeMultiplier);
+        localStorage.setItem("fontSizeMultiplier", fontSizeMultiplier);
     }
 }
 
-// CONTRASTE
-function contraste() {
-    document.body.classList.toggle('contraste-ativo');
-}
+function aplicarAumentoDeFonte(multiplicador) {
+    document.querySelectorAll("body *").forEach(el => {
+        // Ignora elementos do próprio menu e tags de script/estilo
+        if (menuAcessibilidade?.contains(el) || el.tagName === 'SCRIPT' || el.tagName === 'STYLE') return;
 
-// LEITOR DE TEXTO
-let lendo = false;
+        const computedSize = parseFloat(window.getComputedStyle(el).fontSize);
+        let baseSize = originalFontSizes.get(el);
+
+        if (!baseSize) {
+            baseSize = computedSize;
+            originalFontSizes.set(el, baseSize);
+        }
+
+        const novoTamanho = Math.max(10, baseSize + multiplicador * 2);
+        el.style.fontSize = `${novoTamanho}px`;
+    });
+}
 
 function lerTexto() {
     const botao = document.getElementById('botaoLeitura');
@@ -35,7 +96,7 @@ function lerTexto() {
     if (lendo) {
         speechSynthesis.cancel();
         lendo = false;
-        botao.innerText = 'Ler';
+        if (botao) botao.innerText = 'Ler';
         return;
     }
 
@@ -45,17 +106,17 @@ function lerTexto() {
     fala.lang = 'pt-BR';
     fala.rate = 1;
     lendo = true;
-    botao.innerText = 'Parar';
+    if (botao) botao.innerText = 'Parar';
 
     fala.onend = () => {
         lendo = false;
-        botao.innerText = 'Ler';
+        if (botao) botao.innerText = 'Ler';
     };
 
     speechSynthesis.speak(fala);
 }
 
-// BOTÃO VOLTAR AO TOPO
+
 const btnTopo = document.getElementById('btnTopo');
 
 if (btnTopo) {
@@ -75,10 +136,9 @@ if (btnTopo) {
     });
 }
 
-// CARROSSEL AUTOMÁTICO
 window.addEventListener('load', () => {
     const track = document.querySelector('.Fotos');
-    if (!track) return; // Evita erros caso o elemento não exista na página
+    if (!track) return;
 
     // Duplica as imagens para criar efeito infinito
     track.innerHTML += track.innerHTML;
@@ -87,7 +147,6 @@ window.addEventListener('load', () => {
     function animar() {
         position -= 1;
 
-        // Reinicia suavemente
         if (position <= -(track.scrollWidth / 2)) {
             position = 0;
         }
@@ -99,19 +158,9 @@ window.addEventListener('load', () => {
     animar();
 });
 
-// ESCONDER MENU AO CLICAR FORA
-document.addEventListener('click', (e) => {
-    const menu = document.getElementById('menuAcessibilidade');
-    const botao = document.querySelector('.abnace');
-
-    if (menu && botao) {
-        if (!menu.contains(e.target) && !botao.contains(e.target)) {
-            menu.classList.remove('ativo');
-        }
-    }
-});
-
-// FUNÇÃO CONFETES (Corrigida e Limpa)
+// ==========================================================================
+// FUNÇÃO CONFETES
+// ==========================================================================
 function criarConfetes(event) {
     if (event) event.preventDefault();
 
@@ -121,13 +170,8 @@ function criarConfetes(event) {
             confete.className = "confete";
 
             const cores = [
-                "#80BB70",
-                "#dcf5c0",
-                "#a8ffbf",
-                "#2d551d",
-                "#FFD700",
-                "#FF6B6B",
-                "#4ECDC4"
+                "#80BB70", "#dcf5c0", "#a8ffbf", "#2d551d", 
+                "#FFD700", "#FF6B6B", "#4ECDC4"
             ];
 
             confete.style.backgroundColor = cores[Math.floor(Math.random() * cores.length)];
@@ -136,7 +180,6 @@ function criarConfetes(event) {
 
             document.body.appendChild(confete);
 
-            // Remove o confete após a animação terminar (3 segundos)
             setTimeout(() => {
                 confete.remove();
             }, 3000);

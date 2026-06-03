@@ -2,7 +2,7 @@
 
 ## 🌱 Bem-vindo ao site EcoAgro
 
-*Este projeto foi criado com o objetivo de ensinar de forma interativa sobre a agricultura, sua importância, sua história e sua conexão com a vida urbana.*
+*Este projeto foi desenvolvido com o objetivo de ensinar de forma interativa sobre a agricultura, sua importância, sua história e sua conexão com a vida urbana.*
 
 *Neste site, você encontrará conteúdos educativos sobre agricultura, sustentabilidade, práticas do campo e a relação entre campo e cidade.*
 
@@ -16,20 +16,19 @@ Este site tem como missão informar, inspirar e conscientizar sobre a importânc
 
 Mesmo vivendo em áreas urbanas, todos dependem diretamente do campo para alimentação, produtos e sustentabilidade.
 
-Através de um conteúdo educativo e interativo, o projeto busca tornar o aprendizado mais acessível, moderno e envolvente.
+A proposta é tornar o aprendizado mais acessível, moderno e interativo.
 
 ---
 
 ## 🛠 Tecnologias Utilizadas
 
-- HTML5  
-- CSS3  
-- JavaScript (ES Modules)  
-- Firebase (Firestore Database)  
-- Google Fonts  
-- Visual Studio Code (VS Code)  
-- Figma (protótipo do design)  
-- Vercel (hospedagem do site)  
+![HTML5](https://img.shields.io/badge/HTML5-orange?style=for-the-badge&logo=html5)
+![CSS3](https://img.shields.io/badge/CSS3-blue?style=for-the-badge&logo=css3)
+![JavaScript](https://img.shields.io/badge/JavaScript-yellow?style=for-the-badge&logo=javascript)
+![Firebase](https://img.shields.io/badge/Firebase-orange?style=for-the-badge&logo=firebase)
+![VS Code](https://img.shields.io/badge/VSCode-blue?style=for-the-badge&logo=visualstudiocode)
+![Figma](https://img.shields.io/badge/Figma-purple?style=for-the-badge&logo=figma)
+![Vercel](https://img.shields.io/badge/Vercel-black?style=for-the-badge&logo=vercel)
 
 ---
 
@@ -39,128 +38,70 @@ Através de um conteúdo educativo e interativo, o projeto busca tornar o aprend
 - Navegação entre páginas  
 - Sistema de comentários em tempo real com Firebase  
 - Banco de dados na nuvem (Firestore)  
-- Interface responsiva para diferentes dispositivos  
+- Interface responsiva  
 - Carrossel interativo  
 - Linha do tempo da agricultura  
 - Seção de contato com redes sociais  
-- 🎮 Mini jogo de colheita feito em JavaScript  
+- 🎮 Mini jogo de colheita em JavaScript  
 - 🤖 Bot interativo com respostas pré-programadas  
-
----
-
-## ✨ Estilização com CSS3
-
-No CSS, foram utilizadas técnicas modernas para garantir um site bonito, funcional e responsivo:
-
-- Flexbox e Grid Layout  
-- Animações com @keyframes  
-- Transições suaves em botões e elementos  
-- Media Queries para diferentes tamanhos de tela  
-- Cores e contrastes pensados para leitura confortável  
-- Componentes visuais personalizados  
-
----
-
-## ♿ Acessibilidade
-
-O site permite ajuste de tamanho de fonte e contraste para melhorar a leitura e acessibilidade do usuário.
 
 ---
 
 ## 🎮 Jogo de Colheita
 
-O projeto conta com um mini jogo interativo de colheita desenvolvido em JavaScript.
+O projeto conta com um mini jogo interativo onde o usuário simula a colheita de alimentos.
 
-O jogo simula a experiência do campo de forma divertida e educativa, aproximando o usuário do tema agricultura.
+A proposta é trazer uma experiência simples, divertida e educativa sobre o campo.
 
 ---
 
 ## 🤖 Bot Interativo
 
-O site possui um bot desenvolvido em JavaScript que responde a perguntas pré-programadas.
+O site possui um bot em JavaScript que responde perguntas pré-programadas sobre agricultura e o conteúdo do projeto.
 
-Ele funciona como um assistente simples dentro do site, ajudando o usuário com informações básicas sobre o conteúdo do EcoAgro.
+Ele funciona como um assistente simples dentro da aplicação.
 
 ---
 
 ## 🔥 Firebase no Projeto
 
-O Firebase Firestore foi utilizado para:
-
-- Armazenar comentários dos usuários  
-- Atualizar dados em tempo real  
-- Criar uma experiência dinâmica sem backend próprio  
-
----
-
-## 🎨 Identidade Visual
-
-- Logo criada por Melissa Rossa Pereira  
-- Design inspirado na conexão entre campo e cidade  
-- Paleta de cores baseada na natureza e sustentabilidade  
-
----
-
-## 📚 Referências e Autoria
-
-Todo o conteúdo textual foi desenvolvido por **Melissa Rossa Pereira**, com base em pesquisas em fontes confiáveis como:
-
-- Brasil Escola  
-- Mundo Educação  
-- CropLife Brasil  
-- Wikipédia  
-
-O conteúdo foi reescrito com linguagem própria para fins educativos.
+- Armazenamento de comentários  
+- Atualização em tempo real  
+- Banco de dados Firestore  
 
 ---
 
 ## 📌 Informações do Projeto
 
-O site **EcoAgro** foi desenvolvido por **Melissa Rossa Pereira**, como parte do projeto Agrinho 2026.
+O projeto foi desenvolvido por **Melissa Rossa Pereira**, como parte do Agrinho 2026.
 
-Durante o desenvolvimento, foram aplicadas correções e melhorias com auxílio de inteligência artificial, com o objetivo de otimizar o processo de desenvolvimento e aprendizado.
-
-Mesmo assim, toda a estrutura, organização, design e implementação foram criados pela autora.
+Durante o desenvolvimento, foram utilizados recursos de apoio para correção de erros e otimização do código, auxiliando no aprendizado e no processo de construção.
 
 ---
 
-## ✒️ Licença
+## 🌟 Reflexão
 
-Este projeto está licenciado sob a licença MIT.
+Durante o desenvolvimento, foi possível aprender mais sobre JavaScript, integração com banco de dados e criação de interfaces interativas.
 
----
-
-## 🌟 Reflexão sobre o aprendizado
-
-Neste projeto, enfrentei desafios importantes principalmente na integração de JavaScript com Firebase.
-
-Aprendi a trabalhar com dados em tempo real, criar interatividade e melhorar a experiência do usuário.
-
-O jogo de colheita e o bot interativo tornaram o projeto mais dinâmico e divertido.
+O jogo e o bot ajudaram a tornar o projeto mais dinâmico e envolvente.
 
 ---
 
 ## 👩‍💻 Autoria
 
-Projeto desenvolvido por **Melissa Rossa Pereira**.
+**Melissa Rossa Pereira**
 
 ---
 
 ## 📱 Contato
 
-- 📞 WhatsApp: +55 (42) 9 9910-6956  
-- ✉️ E-mail: melissarossap@gmail.com  
-- 📸 Instagram: [m3l.r1](https://www.instagram.com/m3l.r1/)  
-- 🔗 LinkedIn: Melissa Rossa Pereira  
+- WhatsApp: +55 (42) 9 9910-6956  
+- E-mail: melissarossap@gmail.com  
+- Instagram: [m3l.r1](https://www.instagram.com/m3l.r1/)  
+- LinkedIn: Melissa Rossa Pereira  
 
 ---
 
-## 🪄 Agradecimentos
-
-Agradeço à professora, colegas e fontes de estudo que contribuíram para o desenvolvimento do projeto.
-
----
-
-## 📌 Status do Projeto
+## 📌 Status
 
 ✔ Projeto concluído

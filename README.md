@@ -102,6 +102,13 @@ O jogo e o bot ajudaram a tornar o projeto mais dinâmico e envolvente.
 
 ---
 
+## Site:
+
+[Github Pages](https://melissa-rossap.github.io/EcoAgro/)
+[Vercel](https://ecoagrinho.vercel.app/)
+
+---
+
 ##  Status:
 
 ✔ Projeto concluído

@@ -6,7 +6,7 @@ let fontSizeMultiplier = 0;
 const originalFontSizes = new Map();
 let lendo = false;
 
-// INICIALIZAÇÃO: Roda assim que a página carrega para aplicar o que foi salvo
+
 document.addEventListener("DOMContentLoaded", () => {
     inicializarAcessibilidade();
 });

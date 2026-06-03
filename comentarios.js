@@ -7,7 +7,9 @@ import {
     query,
     orderBy,
     onSnapshot,
-    serverTimestamp
+    serverTimestamp,
+    updateDoc,
+    doc
 } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -33,10 +35,10 @@ window.enviarComentario = async function () {
     }
 
     try {
-
         await addDoc(collection(db, "comentarios"), {
             nome,
             mensagem,
+            likes: 0,
             data: serverTimestamp()
         });
 
@@ -51,25 +53,40 @@ window.enviarComentario = async function () {
 
 const lista = document.getElementById("listaComentarios");
 
-const q = query(
-    collection(db, "comentarios"),
-    orderBy("data", "desc")
-);
+const q = query(collection(db, "comentarios"), orderBy("data", "desc"));
 
 onSnapshot(q, (snapshot) => {
 
     lista.innerHTML = "";
 
-    snapshot.forEach((doc) => {
+    snapshot.forEach((d) => {
 
-        const comentario = doc.data();
+        const data = d.data();
 
-        lista.innerHTML += `
-            <div class="comentario">
-                <div class="nome">${comentario.nome}</div>
-                <p>${comentario.mensagem}</p>
-            </div>
+        const div = document.createElement("div");
+        div.classList.add("comentario", "fade-in");
+
+        div.innerHTML = `
+            <div class="nome">${data.nome}</div>
+            <p>${data.mensagem}</p>
+
+            <button class="like-btn" onclick="curtir('${d.id}', ${data.likes || 0})">
+                ❤️ ${data.likes || 0}
+            </button>
         `;
-    });
 
+        lista.appendChild(div);
+    });
 });
+
+window.curtir = async function (id, atual) {
+    const ref = doc(db, "comentarios", id);
+
+    try {
+        await updateDoc(ref, {
+            likes: atual + 1
+        });
+    } catch (e) {
+        console.error("Erro ao curtir:", e);
+    }
+};

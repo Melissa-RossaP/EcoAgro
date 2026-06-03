@@ -5,8 +5,8 @@ let btnAcessibilidade;
 let menuAcessibilidade;
 
 document.addEventListener("DOMContentLoaded", () => {
-    btnAcessibilidade = document.getElementById("btn-acessibilidade") || document.querySelector('.abnace'); 
-    menuAcessibilidade = document.getElementById("menuAcessibilidade"); 
+    btnAcessibilidade = document.getElementById("btn-acessibilidade");
+    menuAcessibilidade = document.getElementById("menu");
 
     inicializarAcessibilidade();
 
@@ -23,9 +23,11 @@ function inicializarAcessibilidade() {
 
     if (fonteSalva) {
         fontSizeMultiplier = parseInt(fonteSalva, 10);
-        setTimeout(() => aplicarAumentoDeFonte(fontSizeMultiplier), 100);
+        aplicarAumentoDeFonte(fontSizeMultiplier);
     }
 }
+
+
 
 function toggleMenu() {
     if (menuAcessibilidade) {
@@ -44,9 +46,14 @@ document.addEventListener('click', (e) => {
     }
 });
 
-function contraste() {
+function alterarContraste() {
     document.body.classList.toggle('contraste-ativo');
-    const contrasteAtual = document.body.classList.contains('contraste-ativo') ? "ativo" : "inativo";
+
+    const contrasteAtual =
+        document.body.classList.contains('contraste-ativo')
+            ? "ativo"
+            : "inativo";
+
     localStorage.setItem("contraste", contrasteAtual);
 }
 
@@ -58,7 +65,7 @@ function aumentarFonte() {
     }
 }
 
-function disminuirFonte() {
+function diminuirFonte() {
     if (fontSizeMultiplier > -5) {
         fontSizeMultiplier--;
         aplicarAumentoDeFonte(fontSizeMultiplier);

@@ -411,6 +411,60 @@ header h1 {
 
 
 
+.Autorais {
+    width: min(1100px, 92%);
+    margin: 40px auto;
+}
+
+.creditos {
+    background:white;
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 10px 25px var(--color-shadow);
+    text-align: center;
+    border-top: 5px solid var(--color-primary);
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    transition: var(--transition);
+    color:#386323;
+    line-height: 1.8;
+    font-size: 1rem;
+}
+
+.creditos:hover {
+    transform: translateY(-5px);
+    border-color: rgba(74, 141, 67, 0.3);
+}
+
+.creditos strong {
+    display: block;
+    font-size: 1.4rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 12px;
+}
+
+.creditos a {
+    color: var(--color-primary-dark);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    padding: 2px 4px;
+    border-radius: 6px;
+}
+
+.creditos a:hover {
+    color: rgb(28, 90, 47);
+    background:fixed;
+    text-decoration: none;
+}
+
+.creditos::before {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
 .robot-button{
     position:fixed;
     right:25px;

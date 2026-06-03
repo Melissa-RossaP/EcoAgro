@@ -124,6 +124,22 @@ header {
 
 /* ACESSIBILIDADE */
 
+.acessibilidade {
+    position: relative;
+}
+
+.menu {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    z-index: 9999;
+}
+
+.abnace {
+    position: relative;
+    z-index: 10000;
+}
+
 .abnace {
     border: none;
     background: white;
@@ -263,7 +279,34 @@ header {
     color: rgb(30, 87, 26);
 }
 
+.Autorais {
+    width: min(900px, 92%);
+    margin: 40px auto;
+    text-align: center;
+}
 
+.creditos-fontes {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    border-top: 4px solid var(--color-primary);
+    font-size: 0.95rem;
+    color: var(--color-text-dark);
+    line-height: 1.8;
+}
+
+.creditos-fontes a {
+    color: var(--color-primary-dark);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.creditos-fontes a:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
 
 /* FOOTER */
 

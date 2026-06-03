@@ -1,14 +1,16 @@
-
-const btnAcessibilidade = document.getElementById("btn-acessibilidade"); 
-const menuAcessibilidade = document.getElementById("menuAcessibilidade"); 
-
 let fontSizeMultiplier = 0;
 const originalFontSizes = new Map();
 let lendo = false;
-
+let btnAcessibilidade;
+let menuAcessibilidade;
 
 document.addEventListener("DOMContentLoaded", () => {
+    btnAcessibilidade = document.getElementById("btn-acessibilidade") || document.querySelector('.abnace'); 
+    menuAcessibilidade = document.getElementById("menuAcessibilidade"); 
+
     inicializarAcessibilidade();
+
+    btnAcessibilidade?.addEventListener("click", toggleMenu);
 });
 
 function inicializarAcessibilidade() {
@@ -21,11 +23,9 @@ function inicializarAcessibilidade() {
 
     if (fonteSalva) {
         fontSizeMultiplier = parseInt(fonteSalva, 10);
-        // Pequeno delay para garantir que o CSS da página terminou de carregar
         setTimeout(() => aplicarAumentoDeFonte(fontSizeMultiplier), 100);
     }
 }
-
 
 function toggleMenu() {
     if (menuAcessibilidade) {
@@ -35,17 +35,11 @@ function toggleMenu() {
     }
 }
 
-
-btnAcessibilidade?.addEventListener("click", toggleMenu);
-
-
 document.addEventListener('click', (e) => {
-    const botao = document.querySelector('.abnace') || btnAcessibilidade;
-
-    if (menuAcessibilidade && botao) {
-        if (!menuAcessibilidade.contains(e.target) && !botao.contains(e.target)) {
+    if (menuAcessibilidade && btnAcessibilidade) {
+        if (!menuAcessibilidade.contains(e.target) && !btnAcessibilidade.contains(e.target)) {
             menuAcessibilidade.classList.remove('ativo');
-            btnAcessibilidade?.setAttribute("aria-expanded", "false");
+            btnAcessibilidade.setAttribute("aria-expanded", "false");
         }
     }
 });
@@ -74,7 +68,6 @@ function disminuirFonte() {
 
 function aplicarAumentoDeFonte(multiplicador) {
     document.querySelectorAll("body *").forEach(el => {
-        // Ignora elementos do próprio menu e tags de script/estilo
         if (menuAcessibilidade?.contains(el) || el.tagName === 'SCRIPT' || el.tagName === 'STYLE') return;
 
         const computedSize = parseFloat(window.getComputedStyle(el).fontSize);
@@ -116,9 +109,7 @@ function lerTexto() {
     speechSynthesis.speak(fala);
 }
 
-
 const btnTopo = document.getElementById('btnTopo');
-
 if (btnTopo) {
     window.addEventListener('scroll', () => {
         if (window.scrollY > 300) {
@@ -129,38 +120,38 @@ if (btnTopo) {
     });
 
     btnTopo.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 }
 
-
+let gerandoConfetes = false;
 
 function criarConfetes(event) {
     if (event) event.preventDefault();
+    if (gerandoConfetes) return;
 
-    for (let i = 0; i < 50; i++) {
+    gerandoConfetes = true;
+
+    const intervaloConfete = setInterval(() => {
+        const confete = document.createElement("div");
+        confete.className = "confete";
+
+        const cores = ["#80BB70", "#dcf5c0", "#a8ffbf", "#2d551d", "#FFD700", "#FF6B6B", "#4ECDC4"];
+
+        confete.style.backgroundColor = cores[Math.floor(Math.random() * cores.length)];
+        confete.style.left = (Math.random() * window.innerWidth) + "px";
+        confete.style.top = "-10px";
+
+        document.body.appendChild(confete);
+
         setTimeout(() => {
-            const confete = document.createElement("div");
-            confete.className = "confete";
+            confete.remove();
+        }, 2500);
 
-            const cores = [
-                "#80BB70", "#dcf5c0", "#a8ffbf", "#2d551d", 
-                "#FFD700", "#FF6B6B", "#4ECDC4"
-            ];
+    }, 100);
 
-            confete.style.backgroundColor = cores[Math.floor(Math.random() * cores.length)];
-            confete.style.left = (Math.random() * window.innerWidth) + "px";
-            confete.style.top = "-10px";
-
-            document.body.appendChild(confete);
-
-            setTimeout(() => {
-                confete.remove();
-            }, 3000);
-
-        }, i * 50);
-    }
+    setTimeout(() => {
+        clearInterval(intervaloConfete);
+        gerandoConfetes = false;
+    }, 5000);
 }

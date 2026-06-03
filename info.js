@@ -136,27 +136,6 @@ if (btnTopo) {
     });
 }
 
-window.addEventListener('load', () => {
-    const track = document.querySelector('.Fotos');
-    if (!track) return;
-
-   
-    track.innerHTML += track.innerHTML;
-    let position = 0;
-
-    function animar() {
-        position -= 1;
-
-        if (position <= -(track.scrollWidth / 2)) {
-            position = 0;
-        }
-
-        track.style.transform = `translateX(${position}px)`;
-        requestAnimationFrame(animar);
-    }
-
-    animar();
-});
 
 
 function criarConfetes(event) {

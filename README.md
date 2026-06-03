@@ -42,8 +42,8 @@ A proposta é tornar o aprendizado mais acessível, moderno e interativo.
 - Carrossel interativo  
 - Linha do tempo da agricultura  
 - Seção de contato com redes sociais  
-- 🎮 Mini jogo de colheita em JavaScript  
-- 🤖 Bot interativo com respostas pré-programadas  
+- Mini jogo de colheita em JavaScript  
+- Bot interativo com respostas pré-programadas  
 
 ---
 

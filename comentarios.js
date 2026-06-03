@@ -7,10 +7,7 @@ import {
     query,
     orderBy,
     onSnapshot,
-    serverTimestamp,
-    updateDoc,
-    doc,
-    increment
+    serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -39,7 +36,6 @@ window.enviarComentario = async function () {
     await addDoc(collection(db, "comentarios"), {
         nome,
         mensagem,
-        likes: 0,
         data: serverTimestamp()
     });
 
@@ -65,22 +61,8 @@ onSnapshot(q, (snapshot) => {
         const msg = document.createElement("p");
         msg.textContent = data.mensagem;
 
-        const btn = document.createElement("button");
-        btn.classList.add("like-btn");
-
-        btn.textContent = `❤️ ${data.likes ?? 0}`;
-
-        btn.addEventListener("click", async () => {
-            const ref = doc(db, "comentarios", d.id);
-
-            await updateDoc(ref, {
-                likes: increment(1)
-            });
-        });
-
         div.appendChild(nome);
         div.appendChild(msg);
-        div.appendChild(btn);
 
         lista.appendChild(div);
     });

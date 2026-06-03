@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comentários EcoAgro</title>
+
+    <link rel="stylesheet" href="comentarios.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>💬 Comentários da Comunidade</h1>
+
+    <div class="formulario">
+
+        <input
+            type="text"
+            id="nome"
+            placeholder="Seu nome">
+
+        <textarea
+            id="mensagem"
+            placeholder="Digite seu comentário"></textarea>
+
+        <button onclick="enviarComentario()">
+            Enviar Comentário
+        </button>
+
+    </div>
+
+    <div id="listaComentarios"></div>
+
+</div>
+
+<script type="module" src="comentarios.js"></script>
+
+</body>
+</html>

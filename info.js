@@ -140,7 +140,7 @@ window.addEventListener('load', () => {
     const track = document.querySelector('.Fotos');
     if (!track) return;
 
-    // Duplica as imagens para criar efeito infinito
+   
     track.innerHTML += track.innerHTML;
     let position = 0;
 

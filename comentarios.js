@@ -14,7 +14,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyC0WFKpk24pwVy4PdrGR_WW-uAhNKg3Y7U",
+    apiKey: "AIzaKey",
     authDomain: "comentariosecoagro.firebaseapp.com",
     projectId: "comentariosecoagro",
     storageBucket: "comentariosecoagro.firebasestorage.app",
@@ -25,15 +25,13 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-window.enviarComentario = async function () {
+const lista = document.getElementById("listaComentarios");
 
+window.enviarComentario = async function () {
     const nome = document.getElementById("nome").value.trim();
     const mensagem = document.getElementById("mensagem").value.trim();
 
-    if (!nome || !mensagem) {
-        alert("Preencha todos os campos.");
-        return;
-    }
+    if (!nome || !mensagem) return alert("Preencha todos os campos.");
 
     try {
         await addDoc(collection(db, "comentarios"), {
@@ -45,46 +43,46 @@ window.enviarComentario = async function () {
 
         document.getElementById("nome").value = "";
         document.getElementById("mensagem").value = "";
-
     } catch (erro) {
         console.error(erro);
         alert("Erro ao enviar comentário.");
     }
 };
 
-const lista = document.getElementById("listaComentarios");
-
 const q = query(collection(db, "comentarios"), orderBy("data", "desc"));
 
 onSnapshot(q, (snapshot) => {
-
     lista.innerHTML = "";
 
     snapshot.forEach((d) => {
-
         const data = d.data();
 
         const div = document.createElement("div");
         div.classList.add("comentario", "fade-in");
 
-        div.innerHTML = `
-            <div class="nome">${data.nome}</div>
-            <p>${data.mensagem}</p>
+        const nome = document.createElement("div");
+        nome.classList.add("nome");
+        nome.textContent = data.nome;
 
-            <button class="like-btn" onclick="curtir('${d.id}')">
-                ❤️ ${data.likes || 0}
-            </button>
-        `;
+        const msg = document.createElement("p");
+        msg.textContent = data.mensagem;
+
+        const btn = document.createElement("button");
+        btn.classList.add("like-btn");
+        btn.textContent = `❤️ ${data.likes || 0}`;
+
+        btn.addEventListener("click", async () => {
+            const ref = doc(db, "comentarios", d.id);
+
+            await updateDoc(ref, {
+                likes: increment(1)
+            });
+        });
+
+        div.appendChild(nome);
+        div.appendChild(msg);
+        div.appendChild(btn);
 
         lista.appendChild(div);
     });
 });
-
-window.curtir = async function (id) {
-
-    const ref = doc(db, "comentarios", id);
-
-    await updateDoc(ref, {
-        likes: increment(1)
-    });
-};

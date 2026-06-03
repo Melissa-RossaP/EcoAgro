@@ -36,19 +36,15 @@ window.enviarComentario = async function () {
         return;
     }
 
-    try {
-        await addDoc(collection(db, "comentarios"), {
-            nome,
-            mensagem,
-            likes: 0,
-            data: serverTimestamp()
-        });
+    await addDoc(collection(db, "comentarios"), {
+        nome,
+        mensagem,
+        likes: 0,
+        data: serverTimestamp()
+    });
 
-        document.getElementById("nome").value = "";
-        document.getElementById("mensagem").value = "";
-    } catch (e) {
-        console.error("Erro ao enviar:", e);
-    }
+    document.getElementById("nome").value = "";
+    document.getElementById("mensagem").value = "";
 };
 
 const q = query(collection(db, "comentarios"), orderBy("data", "desc"));
@@ -71,18 +67,15 @@ onSnapshot(q, (snapshot) => {
 
         const btn = document.createElement("button");
         btn.classList.add("like-btn");
+
         btn.textContent = `❤️ ${data.likes ?? 0}`;
 
         btn.addEventListener("click", async () => {
-            console.log("clicou no like:", d.id);
-
             const ref = doc(db, "comentarios", d.id);
 
             await updateDoc(ref, {
                 likes: increment(1)
             });
-
-            console.log("update enviado para Firestore");
         });
 
         div.appendChild(nome);

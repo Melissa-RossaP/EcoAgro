@@ -5,16 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="info.css">
     <title>informações</title>
+    <script src="info.js"></script>
 </head>
-<body>
 
-    <div id="splashScreen" class="splash-screen">
-        <div class="splash-content">
-            <span class="linha1">Bem-vindo(a) ao</span><br>
-            <strong class="linha2">Sobre EcoAgro</strong>
-        </div>
-    </div>
-
+<!-- VLIBRAS - ACESSIBILIDADE -->
     <div vw class="enabled">
         <div vw-access-button class="active"></div>
         <div vw-plugin-wrapper>
@@ -26,30 +20,37 @@
         new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
 
-    <header>
-        <div class="Logo">
-            <a href="index.html" aria-label="Voltar para a página inicial">
-                <img src="Img/logo-agrinho.png" alt="Logo EcoAgro" loading="lazy">
-            </a>
-        </div>
+<body>
+<header>
 
-        <button onclick="window.location.href='index.html'" class="botao-voltar" aria-label="Voltar ao Index">Voltar</button>
+    <div class="splash-text">
+        <span class="linha1">Bem-vindo(a) ao</span><br>
+        <strong class="linha2">Sobre EcoAgro</strong>
+    </div>
 
+    <div class="Logo">
+        <a href="index.html" aria-label="Voltar para a página inicial">
+            <img src="Img/logo-agrinho.png" alt="Logo EcoAgro" loading="lazy">
+        </a>
+    </div>
+
+    <button onclick="window.location.href='index.html'" class="botao-voltar" aria-label="Voltar ao Index">Voltar</button>
+
+            <!-- ACESSIBILIDADE (acho q tem q melhorar, vou ver se consigo fazer falar, porem depende se eu tenho essa capacidade, pq eu nao lembro mais como q faz, **Melhorar o CSS logo**) -->
         <div class="acessibilidade">
             <button 
                 class="abnace" 
                 id="btn-acessibilidade"
                 aria-label="Menu de acessibilidade"
                 aria-expanded="false"
-                aria-controls="menu"
-                onclick="toggleMenu()">
+                aria-controls="menu">
                 <img src="Img/acessibilidade.png" alt="Acessibilidade">
             </button>
 
-            <div class="menu" id="menuAcessibilidade" role="menu">
+            <div class="menu" id="menu" role="menu">
                 <button 
                     class="botao" 
-                    onclick="contraste()"
+                    onclick="alterarContraste()"
                     role="menuitem"
                     aria-label="Alternar contraste">
                      Contraste
@@ -65,7 +66,7 @@
 
                 <button 
                     class="botao" 
-                    onclick="disminuirFonte()"
+                    onclick="diminuirFonte()"
                     role="menuitem"
                     aria-label="Diminuir tamanho da fonte">
                     A-
@@ -81,101 +82,184 @@
                 </button>
             </div>
         </div>
-    </header>
 
-    <main>
-        <h1 class="titulo-principal" onclick="criarConfetes(event)">
-            Olá! Bem-vindo(a) ao Sobre do EcoAgro!
-        </h1>
+</header>
 
-        <section class="INICIO">
-            <p>
-                Meu nome é Melissa Rossa Pereira, sou aluna da 3º série do Ensino Médio no Colégio Estadual Professora Helena Ronkoski Fioravante, localizado na cidade de Reserva, no interior do Paraná.
-            </p>
-            <br>
-            <p>
-                Este site foi criado como parte da minha participação no Programa Agrinho 2026, com o tema "Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente".
-            </p>
-            <br>
-        </section>
+<main>
 
-        <section class="Reserva">
-            <p>
-                Reserva, no Paraná, nasceu como ponto de parada de tropeiros e cresceu com a força da agricultura e da madeira.
-            </p>
-            <br>
-            <p>
-                Hoje, é uma cidade acolhedora, cheia de tradições e pessoas batalhadoras. Nos últimos anos, a tecnologia transformou o município, com internet de fibra, tratores modernos, escolas conectadas e saúde digitalizada.
-            </p>
-            <br>
-            <p>
-                Além disso, é reconhecida pela produção de tomate, que impulsionou a economia local e fortaleceu o vínculo da comunidade com o campo.
-            </p>
-        </section>
+    <h1 class="titulo-principal" onmouseover="criarConfetes()">
+        Olá! Bem-vindo(a) ao Sobre do EcoAgro!
+    </h1>
 
-        <section class="AGRINHO">
-            <p>
-                O Programa Agrinho surgiu em 1995 como um projeto voltado à orientação de trabalhadores rurais e à aproximação entre o campo e a sala de aula.
-            </p>
-            <br>
-            <p>
-                Em 1996, consolidou-se como programa estadual, levando materiais educativos às escolas públicas do Paraná com apoio de secretarias municipais de educação.
-            </p>
-            <br>
-            <p>
-                Atualmente, o Agrinho é uma das principais iniciativas de educação e cidadania no meio rural brasileiro.
-            </p>
-            <div class="comdes">
-                <img src="Img/agrinhofaep.jpg" alt="Programa Agrinho" loading="lazy">
-                <p>Programa Agrinho - Sistema FAEP</p>
-                <div class="Wiki">
-                    <a href="https://www.sistemafaep.org.br/" target="_blank">
-                        Site do Sistema FAEP
-                    </a>
-                </div>
+    <section class="INICIO">
+
+        <p>
+            Meu nome é Melissa Rossa Pereira, sou aluna da 3º série do Ensino Médio no Colégio Estadual Professora Helena Ronkoski Fioravante, localizado na cidade de Reserva, no interior do Paraná.
+        </p>
+
+        <br>
+
+        <p>
+            Este site foi criado como parte da minha participação no Programa Agrinho 2026, com o tema "Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente".
+        </p>
+
+        <br>
+
+    </section>
+
+    <section class="Reserva">
+
+        <p>
+            Reserva, no Paraná, nasceu como ponto de parada de tropeiros e cresceu com a força da agricultura e da madeira.
+        </p>
+
+        <br>
+
+        <p>
+            Hoje, é uma cidade acolhedora, cheia de tradições e pessoas batalhadoras. Nos últimos anos, a tecnologia transformou o município, com internet de fibra, tratores modernos, escolas conectadas e saúde digitalizada.
+        </p>
+
+        <br>
+
+        <p>
+            Além disso, é reconhecida pela produção de tomate, que impulsionou a economia local e fortaleceu o vínculo da comunidade com o campo.
+        </p>
+
+
+    </section>
+
+
+
+    <section class="AGRINHO">
+
+        <p>
+            O Programa Agrinho surgiu em 1995 como um projeto voltado à orientação de trabalhadores rurais e à aproximação entre o campo e a sala de aula.
+        </p>
+
+        <br>
+
+        <p>
+            Em 1996, consolidou-se como programa estadual, levando materiais educativos às escolas públicas do Paraná com apoio de secretarias municipais de educação.
+        </p>
+
+        <br>
+
+        <p>
+            Atualmente, o Agrinho é uma das principais iniciativas de educação e cidadania no meio rural brasileiro.
+        </p>
+
+        <div class="comdes">
+
+            <img src="Img/agrinhofaep.jpg alt=agrinho"Programa Agrinho" loading="lazy">
+
+            <p>Programa Agrinho - Sistema FAEP</p>
+
+            <div class="Wiki">
+                <a href="https://www.sistemafaep.org.br/" target="_blank">
+                    Site do Sistema FAEP
+                </a>
             </div>
-        </section>
 
-        <section class="AGROHIST">
-            <p>
-                Em 1995, a agricultura utilizava métodos mais tradicionais e havia menor acesso à tecnologia.
-            </p>
-            <br>
-            <p>
-                Muitas lavouras dependiam diretamente do clima e da experiência passada entre generations.
-            </p>
-            <br>
-            <p>
-                Hoje, a agricultura brasileira utiliza GPS, sensores, drones e máquinas modernas, tornando a produção mais eficiente e sustentável.
-            </p>
-        </section>
+        </div>
 
-        <section class="Brasil">
-            <p>
-                Atualmente, a agricultura brasileira é uma das mais tecnológicas do mundo.
-                A evolução ocorreu por diversos meios produtivos, desde a cana-de-açúcar e o algodão, sendo praticada com o auxílio das técnicas tradicionais.
-                Brasil se consolidou como um dos maiores exportadores agrícolas do mundo, sendo um grande produtor há vários anos.
-            </p>
-            <br>
-            <p>
-                Programas como o Agrinho ajudam a conscientizar sobre a importância do campo e da sustentabilidade para toda a sociedade.
-            </p>
-        </section>
+    </section>
 
-        <section class="Sitezinho">
-            <p>
-                O objetivo deste espaço é informar, inspirar e valorizar a importância do campo em nossas vidas.
-            </p>
-            <br>
-            <p>
-                Este projeto foi desenvolvido com dedicação, reunindo conhecimentos adquiridos na escola, no Alura e nas orientações da professora Regiane Heil Plem.
-            </p>
-        </section>
-    </main>
+    <section class="AGROHIST">
 
-    <footer id="contato">
-        <div class="FooterCon">
-            <a href="https://www.linkedin.com/in/melissa-rossa-pereira-271486277/" target="_blank" class="contato-item">
-                <img src="Img/linkedin_icon.png" alt="Linkedin">
-                <span class="atributo">Ícones por Flaticon</span>
-            </a>
+        <p>
+            Em 1995, a agricultura utilizava métodos mais tradicionais e havia menor acesso à tecnologia.
+        </p>
+
+        <br>
+
+        <p>
+            Muitas lavouras dependiam diretamente do clima e da experiência passada entre gerações.
+        </p>
+
+        <br>
+
+        <p>
+            Hoje, a agricultura brasileira utiliza GPS, sensores, drones e máquinas modernas, tornando a produção mais eficiente e sustentável.
+        </p>
+
+    </section>
+
+    <section class="Brasil">
+
+        <p>
+            Atualmente, a agricultura brasileira é uma das mais tecnológicas do mundo.
+            A evolução ocorreu por diversos meios produtivos, desde a cana-de-açúcar e o algodão, sendo praticada com o auxílio das técnicas tradicionais.
+            Brasil se consolidou como um dos maiores exportadores agrícolas do mundo, sendo um grande produtor há vários anos.
+
+        </p>
+
+        <br>
+
+        <p>
+            Programas como o Agrinho ajudam a conscientizar sobre a importância do campo e da sustentabilidade para toda a sociedade.
+        </p>
+
+    </section>
+
+    <section class="Sitezinho">
+
+        <p>
+            O objetivo deste espaço é informar, inspirar e valorizar a importância do campo em nossas vidas.
+        </p>
+
+        <br>
+
+        <p>
+            Este projeto foi desenvolvido com dedicação, reunindo conhecimentos adquiridos na escola, no Alura e nas orientações da professora Regiane Heil Plem.
+        </p>
+
+    </section>
+
+</main>
+
+<footer id="contato">
+
+    <div class="FooterCon">
+
+        <a href="https://www.linkedin.com/in/melissa-rossa-pereira-271486277/" target="_blank" class="contato-item">
+            <img src="Img/linkedin_icon.png" alt="Linkedin">
+            <span class="atributo">
+                Ícones por Flaticon
+            </span>
+        </a>
+
+        <a href="https://wa.me/554299106956" target="_blank" class="contato-item">
+            <img src="Img/Whats.png" alt="WhatsApp">
+            <span class="atributo">
+                Ícones por Flaticon
+            </span>
+        </a>
+
+        <a href="https://github.com/Melissa-RossaP" target="_blank" class="contato-item">
+            <img src="Img/Github.png" alt="Github">
+            <span class="atributo">
+                Ícones por Flaticon
+            </span>
+        </a>
+
+        <a href="https://www.instagram.com/m3l.r1/" target="_blank" class="contato-item">
+            <img src="Img/instagram.png" alt="Instagram">
+            <span class="atributo">
+                Ícones por Flaticon
+            </span>
+        </a>
+
+    </div>
+
+    <div class="Ops">
+        <p>
+            © Desenvolvido por Melissa Rossa Pereira | 2026
+        </p>
+    </div>
+
+    <button id="btnTopo" title="Voltar ao topo"> ↑ </button>
+
+    
+</footer>
+</body>
+</html>

@@ -9,7 +9,8 @@ import {
     onSnapshot,
     serverTimestamp,
     updateDoc,
-    doc
+    doc,
+    increment
 } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -70,7 +71,7 @@ onSnapshot(q, (snapshot) => {
             <div class="nome">${data.nome}</div>
             <p>${data.mensagem}</p>
 
-            <button class="like-btn" onclick="curtir('${d.id}', ${data.likes || 0})">
+            <button class="like-btn" onclick="curtir('${d.id}')">
                 ❤️ ${data.likes || 0}
             </button>
         `;
@@ -79,14 +80,11 @@ onSnapshot(q, (snapshot) => {
     });
 });
 
-window.curtir = async function (id, atual) {
+window.curtir = async function (id) {
+
     const ref = doc(db, "comentarios", id);
 
-    try {
-        await updateDoc(ref, {
-            likes: atual + 1
-        });
-    } catch (e) {
-        console.error("Erro ao curtir:", e);
-    }
+    await updateDoc(ref, {
+        likes: increment(1)
+    });
 };

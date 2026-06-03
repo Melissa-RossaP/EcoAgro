@@ -35,10 +35,10 @@ function toggleMenu() {
     }
 }
 
-// Listener alternativo caso use o clique direto via ID do botão
+
 btnAcessibilidade?.addEventListener("click", toggleMenu);
 
-// ESCONDER MENU AO CLICAR FORA (Unificado e protegido contra erros)
+
 document.addEventListener('click', (e) => {
     const botao = document.querySelector('.abnace') || btnAcessibilidade;
 
@@ -158,9 +158,7 @@ window.addEventListener('load', () => {
     animar();
 });
 
-// ==========================================================================
-// FUNÇÃO CONFETES
-// ==========================================================================
+
 function criarConfetes(event) {
     if (event) event.preventDefault();
 

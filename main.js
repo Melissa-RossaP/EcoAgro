@@ -203,7 +203,6 @@ function adicionarMensagem(tipo, texto) {
     return mensagem;
 }
 
-// Ouvinte para enviar a mensagem também ao pressionar a tecla Enter
 inputMensagem?.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
         enviarMensagem();
@@ -288,12 +287,8 @@ atualizarOpcoesRapidas();
 
 function criarConfetes(event) {
 
-    event?.preventDefault?.();
-
     for (let i = 0; i < 50; i++) {
-
         setTimeout(() => {
-
             const confete =
                 document.createElement("div");
 
@@ -611,7 +606,6 @@ window.addEventListener('load', () => {
     const track = document.querySelector('.Fotos');
     if (!track) return;
 
-    // Duplica as imagens para criar efeito infinito
     track.innerHTML += track.innerHTML;
     let position = 0;
 

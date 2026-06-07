@@ -5,13 +5,11 @@ body{
     padding: 20px;
 }
 
-/* CONTAINER */
 .container{
     max-width: 900px;
     margin: auto;
 }
 
-/* TÍTULO */
 h1{
     text-align: center;
     color: #2d551d;
@@ -19,7 +17,7 @@ h1{
     margin-bottom: 20px;
 }
 
-/* FORMULÁRIO */
+
 .formulario{
     background: white;
     padding: 25px;
@@ -28,7 +26,6 @@ h1{
     margin-bottom: 30px;
 }
 
-/* INPUTS */
 input,
 textarea{
     width: 100%;
@@ -41,13 +38,11 @@ textarea{
     font-size: 14px;
 }
 
-/* TEXTAREA */
 textarea{
     resize: none;
     height: 120px;
 }
 
-/* BOTÃO */
 button{
     background: #4a8d43;
     color: white;
@@ -64,7 +59,6 @@ button:hover{
     transform: scale(1.02);
 }
 
-/* COMENTÁRIOS */
 .comentario{
     background: white;
     padding: 20px;
@@ -80,7 +74,6 @@ button:hover{
     margin-bottom: 8px;
 }
 
-/* BOTÃO VOLTAR */
 .btn-voltar{
     display: inline-block;
     margin-bottom: 15px;
@@ -151,7 +144,6 @@ button:hover{
 
 
 
-/* RESPONSIVO */
 @media (max-width: 600px){
 
     body{

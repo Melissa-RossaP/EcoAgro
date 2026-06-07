@@ -9,6 +9,8 @@ body{
   background:#b7d38d;
   overflow:hidden;
   image-rendering:pixelated;
+  width:100vw;
+  height:100vh;
 }
 
 .menu{
@@ -20,6 +22,9 @@ body{
   justify-content:center;
   align-items:center;
   z-index:99;
+  width:100%;
+  height:100%;
+  overflow:auto;
 }
 
 .titulo{
@@ -47,9 +52,10 @@ body{
 }
 
 .cenario{
-  width:100vw;
-  height:100vh;
+  width:100%;
+  height:100%;
   position:relative;
+  min-height:100vh;
 }
 
 .ceu{
@@ -67,6 +73,7 @@ body{
   height:90px;
   background:#ffd60a;
   box-shadow:0 0 0 8px #ffe45e;
+  border-radius:50%;
 }
 
 .nuvem{
@@ -160,6 +167,10 @@ body{
   justify-content:center;
   align-items:center;
   gap:80px;
+  width:100%;
+  height:100%;
+  padding:20px;
+  box-sizing:border-box;
 }
 
 .itens{
@@ -374,6 +385,11 @@ body{
   align-items:center;
   flex-direction:column;
   z-index:999;
+  width:100%;
+  height:100%;
+  overflow:auto;
+  padding:20px;
+  box-sizing:border-box;
 }
 
 .final-box{

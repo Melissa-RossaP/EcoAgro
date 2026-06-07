@@ -417,3 +417,185 @@ body{
   font-size:22px;
   color:#283618;
 }
+@media (max-width: 1024px){
+
+  .titulo{
+    font-size:48px;
+    text-align:center;
+    padding:0 20px;
+  }
+
+  .game{
+    gap:40px;
+  }
+
+  .vaso,
+  .caixa{
+    width:200px;
+    height:200px;
+  }
+
+  .item{
+    width:100px;
+    height:100px;
+  }
+
+  .hud{
+    font-size:18px;
+  }
+
+  .msg{
+    width:90%;
+    text-align:center;
+    font-size:18px;
+  }
+}
+
+@media (max-width: 768px){
+
+  body{
+    overflow:auto;
+  }
+
+  .titulo{
+    font-size:38px;
+    text-align:center;
+    padding:0 15px;
+  }
+
+  .botao{
+    width:85%;
+    max-width:300px;
+    font-size:22px;
+    padding:16px;
+  }
+
+  .botaozinho{
+    top:10px;
+    right:10px;
+    font-size:14px;
+    padding:8px 14px;
+  }
+
+  .hud{
+    top:10px;
+    left:10px;
+    font-size:16px;
+    padding:8px 12px;
+  }
+
+  .game{
+    flex-direction:column;
+    gap:25px;
+    padding-top:100px;
+  }
+
+  .itens{
+    flex-direction:row;
+    gap:15px;
+  }
+
+  .item{
+    width:90px;
+    height:90px;
+  }
+
+  .vaso,
+  .caixa{
+    width:180px;
+    height:180px;
+  }
+
+  .vaso-pixel{
+    width:90px;
+    height:70px;
+  }
+
+  .vaso-pixel::before{
+    width:110px;
+  }
+
+  .caixa-pixel{
+    width:90px;
+    height:90px;
+  }
+
+  .planta-crescida{
+    width:140px;
+    height:180px;
+  }
+
+  .msg{
+    width:90%;
+    font-size:16px;
+    text-align:center;
+  }
+
+  .final-box{
+    width:90%;
+    padding:25px;
+  }
+
+  .final-box h1{
+    font-size:28px;
+  }
+
+  .final-box p{
+    font-size:18px;
+  }
+
+  .opcao{
+    width:100%;
+    font-size:18px;
+  }
+
+  .sol{
+    width:60px;
+    height:60px;
+    right:20px;
+  }
+
+  .nuvem{
+    transform:scale(0.7);
+  }
+}
+
+@media (max-width: 480px){
+
+  .titulo{
+    font-size:30px;
+  }
+
+  .game{
+    gap:15px;
+  }
+
+  .item{
+    width:75px;
+    height:75px;
+  }
+
+  .vaso,
+  .caixa{
+    width:150px;
+    height:150px;
+  }
+
+  .hud{
+    font-size:14px;
+  }
+
+  .msg{
+    font-size:14px;
+    padding:10px;
+  }
+
+  .plantacao{
+    bottom:90px;
+  }
+
+  .trigo{
+    height:50px;
+  }
+
+}

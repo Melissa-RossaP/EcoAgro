@@ -95,8 +95,8 @@ O jogo e o bot ajudaram a tornar o projeto mais dinâmico e envolvente.
 
 ##  Contato:
 
-- WhatsApp: +55 (42) 9 9910-6956  
-- E-mail: melissarossap@gmail.com  
+- WhatsApp: [+55 (42) 9 9910-6956](https://wa.me/554299106956)
+- E-mail: [melissarossap@gmail.com](mailto:melissarossap@gmail.com)
 - Instagram: [m3l.r1](https://www.instagram.com/m3l.r1/)  
 - LinkedIn: [Melissa Rossa Pereira](https://www.linkedin.com/in/melissarossap/)
 
